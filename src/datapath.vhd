@@ -65,4 +65,4 @@ architecture str of datapath is
     end component;
 
 begin --str
-end str;
+end str;;
