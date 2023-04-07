@@ -10,7 +10,7 @@ entity alu is
     input1    : in std_logic_vector(WIDTH-1 downto 0);
     input2    : in std_logic_vector(WIDTH-1 downto 0);
     shift     : in std_logic_vector(4 downto 0);
-    op        : in std_logic_vector(5 downto 0)
+    op        : in ALU_OP_t;
     result    : out std_logic_vector(WIDTH-1 downto 0);
     result_hi : out std_logic_vector(WIDTH-1 downto 0);
     branch    : out std_logic_vector);
