@@ -14,7 +14,7 @@ entity alu is
     result    : out std_logic_vector(WIDTH-1 downto 0);
     result_hi : out std_logic_vector(WIDTH-1 downto 0);
     branch    : out std_logic_vector);
-end alu;
+end alu;d
 
 architecture bhv of alu is  
 begin --bhv
