@@ -5,11 +5,14 @@ use work.ALU_OP_LIB.all;
 
 entity datapath is
     port (
+        -- Top Level / Interface
         clk             : in std_logic;
         rst             : in std_logic;
-
-        InPort0         : in std_logic_vector(31 downto 0);
-        InPort1         : in std_logic_vector(31 downto 0); -- TODO: fix these
+        InPort0_en      : in std_logic;
+        InPort1_en      : in std_logic;
+        InPort          : in std_logic_vector(31 downto 0);
+        OutPort         : out std_logic_vector(31 downto 0);
+        -- Controller
         PCWriteCond     : in std_logic;
         PCWrite         : in std_logic;
         IorD            : in std_logic;
@@ -25,20 +28,19 @@ entity datapath is
         ALUSrcA         : in std_logic;
         RegWrite        : in std_logic;
         RegDest         : in std_logic;
-
+        IR31downto26    : out std_logic_vector(5 downto 0);
+        -- ALU Control
         ALUOPSel        : in ALU_OP_t;
         HI_en           : in std_logic;
         LO_en           : in std_logic;
         ALU_LO_HI       : in std_logic_vector(1 downto 0);
-
-        IR31downto26    : out std_logic_vector(5 downto 0);
         IR5downto0      : out std_logic_vector(5 downto 0);
-        OutPort         : out std_logic_vector(31 downto 0);
     )
 end datapath;
 
 architecture str of datapath is
     signal PC           : std_logic_vector(31 downto 0);    -- Output from program counter register
+    signal PC_en        : std_logic;                        -- Combinational logic from controller
     signal MemAddrSel   : std_lgoic_vector(31 downto 0);    -- Selection between PC and ALUOutSel
     signal MemData      : std_logic_vector(31 downto 0);    -- Output from main memory
     signal IR           : std_logic_vector(31 downto 0);    -- Output from instruction register
@@ -58,8 +60,6 @@ architecture str of datapath is
     signal ALUOutReg    : std_logic_vector(31 downto 0);    -- Output from ALU Out Reg
     signal LOReg        : std_logic_vector(31 downto 0);    -- Output from LO Reg
     signal HIReg        : std_logic_vector(31 downto 0);    -- Output from HI Reg
-
-
 
     component REG is
         generic (
@@ -107,4 +107,13 @@ begin --str
 
     PC_en <= ((BranchTaken and PCWriteCond) or PCWrite);
 
+    U_MEMORY_MUX : MUX_2x1
+        generic map (WIDTH => 32)
+        port map (
+            in0     => PC,
+            in1     => ALUOutReg,
+            sel     => IorD,
+            output  => MemAddrSel);
+
+    
 end str;
