@@ -1,0 +1,18 @@
+Fitter Status : Successful - Sun Apr 09 14:26:44 2023
+Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Revision Name : MIPS-Project-Quartus
+Top-level Entity Name : datapath
+Family : MAX 10
+Device : 10M50DAF484C6GES
+Timing Models : Preliminary
+Total logic elements : 2,723 / 49,760 ( 5 % )
+    Total combinational functions : 2,643 / 49,760 ( 5 % )
+    Dedicated logic registers : 1,302 / 49,760 ( 3 % )
+Total registers : 1302
+Total pins : 122 / 360 ( 34 % )
+Total virtual pins : 0
+Total memory bits : 8,192 / 1,677,312 ( < 1 % )
+Embedded Multiplier 9-bit elements : 16 / 288 ( 6 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

@@ -1,0 +1,42 @@
+C:/Dev/MIPS-Project/testbenches/alu_simple_tb.vhd {2 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/testbenches/alu_simple_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package ALU_OP_LIB
+-- Compiling entity alu_simple_tb
+-- Compiling architecture SIMPLE of alu_simple_tb
+-- Loading entity alu
+** Warning: C:/Dev/MIPS-Project/testbenches/alu_simple_tb.vhd(77): (vcom-135) Based literal has negative value.
+** Warning: C:/Dev/MIPS-Project/testbenches/alu_simple_tb.vhd(98): (vcom-135) Based literal has negative value.
+
+} {} {}} C:/Dev/MIPS-Project/testbenches/alu_exhaustive_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/testbenches/alu_exhaustive_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package ALU_OP_LIB
+-- Compiling entity alu_exhaustive_tb
+-- Compiling architecture EXHAUSTIVE of alu_exhaustive_tb
+-- Loading entity alu
+
+} {} {}} C:/Dev/MIPS-Project/src/libraries/ALU_OP_LIB.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/libraries/ALU_OP_LIB.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package ALU_OP_LIB
+
+} {} {}} C:/Dev/MIPS-Project/src/alu.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/alu.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package ALU_OP_LIB
+-- Compiling entity alu
+-- Compiling architecture bhv of alu
+
+} {} {}}

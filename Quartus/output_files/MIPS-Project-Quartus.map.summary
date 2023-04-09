@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Sun Apr 09 14:26:27 2023
+Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Revision Name : MIPS-Project-Quartus
+Top-level Entity Name : datapath
+Family : MAX 10
+Total logic elements : 3,718
+    Total combinational functions : 2,642
+    Dedicated logic registers : 1,302
+Total registers : 1302
+Total pins : 122
+Total virtual pins : 0
+Total memory bits : 8,192
+Embedded Multiplier 9-bit elements : 16
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

@@ -1,0 +1,261 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Dev/MIPS-Project/ModelSim/ALU_Test
+Ememory
+Z0 w1681064078
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dC:/Dev/MIPS-Project/ModelSim/Memory_Test
+Z5 8C:/Dev/MIPS-Project/src/memory/memory.vhd
+Z6 FC:/Dev/MIPS-Project/src/memory/memory.vhd
+l0
+L5
+VGT<[F:QC@`Aa3M@]cM9z_0
+!s100 W;^<haQfOfg:2UeACDo_o3
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1681065073
+!i10b 1
+Z9 !s108 1681065073.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/memory/memory.vhd|
+Z11 !s107 C:/Dev/MIPS-Project/src/memory/memory.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Aarch
+Z14 DPx9 altera_mf 20 altera_mf_components 0 22 @6M>I48X_jBQDo@?W=TN93
+Z15 DEx4 work 3 ram 0 22 U??GgDJKoW:>e<L1TiS<^1
+Z16 DEx4 work 3 reg 0 22 3CJ]P?gdb]:Q=6D2VncW33
+Z17 DEx4 work 7 mux_4x1 0 22 AZl1_02>gkB[0KmE5Ukc`1
+R1
+R2
+R3
+Z18 DEx4 work 6 memory 0 22 GT<[F:QC@`Aa3M@]cM9z_0
+l35
+L24
+V@BYdMVmT=_PaDO=hi_PQ12
+!s100 5NGHKEYaTfDWHNN3S8bBh0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Ememory_tb
+Z19 w1681050717
+R1
+R2
+R3
+R4
+Z20 8C:/Dev/MIPS-Project/testbenches/memory_tb.vhd
+Z21 FC:/Dev/MIPS-Project/testbenches/memory_tb.vhd
+l0
+L5
+V_kiS2gc@klE4Vk3RdCF4^2
+!s100 K:h_7;_e46:2;TAj@4dAB3
+R7
+32
+R8
+!i10b 1
+R9
+Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/testbenches/memory_tb.vhd|
+Z23 !s107 C:/Dev/MIPS-Project/testbenches/memory_tb.vhd|
+!i113 1
+R12
+R13
+Atb
+R18
+R1
+R2
+R3
+DEx4 work 9 memory_tb 0 22 _kiS2gc@klE4Vk3RdCF4^2
+l21
+L8
+Ve90Y7aa9^PG?;d^`:NkZC0
+!s100 FzWBNQZDn;dkao[GAQ:Gz1
+R7
+32
+R8
+!i10b 1
+R9
+R22
+R23
+!i113 1
+R12
+R13
+Emux_2x1
+Z24 w1681003872
+R1
+R2
+R3
+R4
+Z25 8C:/Dev/MIPS-Project/src/primitives/mux_2x1.vhd
+Z26 FC:/Dev/MIPS-Project/src/primitives/mux_2x1.vhd
+l0
+L5
+V1UhLlg7>KWLbVlNGe:@hG1
+!s100 FFUE4e5Eli=;604fSIQo?3
+R7
+32
+R8
+!i10b 1
+R9
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/primitives/mux_2x1.vhd|
+Z28 !s107 C:/Dev/MIPS-Project/src/primitives/mux_2x1.vhd|
+!i113 1
+R12
+R13
+Abhv
+R1
+R2
+R3
+DEx4 work 7 mux_2x1 0 22 1UhLlg7>KWLbVlNGe:@hG1
+l16
+L15
+VP8:9?F0>9j1285d6^]c5M3
+!s100 YI^_:5`2hizBT>4]n@l3h1
+R7
+32
+R8
+!i10b 1
+R9
+R27
+R28
+!i113 1
+R12
+R13
+Emux_4x1
+R24
+R1
+R2
+R3
+R4
+Z29 8C:/Dev/MIPS-Project/src/primitives/mux_4x1.vhd
+Z30 FC:/Dev/MIPS-Project/src/primitives/mux_4x1.vhd
+l0
+L5
+VAZl1_02>gkB[0KmE5Ukc`1
+!s100 [kGT:9@zM:c7>729[ZoMG0
+R7
+32
+R8
+!i10b 1
+R9
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/primitives/mux_4x1.vhd|
+Z32 !s107 C:/Dev/MIPS-Project/src/primitives/mux_4x1.vhd|
+!i113 1
+R12
+R13
+Abhv
+R1
+R2
+R3
+R17
+l18
+L17
+Z33 VlR53:ag?azRf^Gz54<:UQ3
+Z34 !s100 M7FZz?h?2DPO`^Z7?@LN`2
+R7
+32
+R8
+!i10b 1
+R9
+R31
+R32
+!i113 1
+R12
+R13
+Eram
+Z35 w1681065065
+R14
+R2
+R3
+R4
+Z36 8C:/Dev/MIPS-Project/src/memory/ram.vhd
+Z37 FC:/Dev/MIPS-Project/src/memory/ram.vhd
+l0
+L43
+VU??GgDJKoW:>e<L1TiS<^1
+!s100 T8PJ1fajcAF?KZ39ebk;80
+R7
+32
+R8
+!i10b 1
+R9
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/memory/ram.vhd|
+Z39 !s107 C:/Dev/MIPS-Project/src/memory/ram.vhd|
+!i113 1
+R12
+R13
+Asyn
+R14
+R2
+R3
+R15
+l59
+L55
+V6G]hU@9BFBZ15R]Bk`VS]1
+!s100 H5[<8fP_0=gF]<Dk49SDL1
+R7
+32
+R8
+!i10b 1
+R9
+R38
+R39
+!i113 1
+R12
+R13
+Ereg
+R24
+R1
+R2
+R3
+R4
+Z40 8C:/Dev/MIPS-Project/src/primitives/reg.vhd
+Z41 FC:/Dev/MIPS-Project/src/primitives/reg.vhd
+l0
+L5
+V3CJ]P?gdb]:Q=6D2VncW33
+!s100 Y3e5QD8L_0>7F347j45FE2
+R7
+32
+R8
+!i10b 1
+R9
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/primitives/reg.vhd|
+Z43 !s107 C:/Dev/MIPS-Project/src/primitives/reg.vhd|
+!i113 1
+R12
+R13
+Abhv
+R1
+R2
+R3
+R16
+l17
+L16
+VnROG;DYaAbO`BM]EE0@dN0
+!s100 zh8MZj3NNnVPWBOgIbneA3
+R7
+32
+R8
+!i10b 1
+R9
+R42
+R43
+!i113 1
+R12
+R13

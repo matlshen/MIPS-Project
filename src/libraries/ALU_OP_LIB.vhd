@@ -7,5 +7,6 @@ package ALU_OP_LIB is
         ALU_AND, ALU_OR, ALU_XOR, ALU_SRL,
         ALU_SLL, ALU_SRA, ALU_SLT, ALU_SLTU,
         ALU_BEQ, ALU_BNE, ALU_BLEZ, ALU_BGEZ,
-        ALU_BLTZ, ALU_BGTZ);
+        ALU_BLTZ, ALU_BGTZ, ALU_BLTE, ALU_BGTE,
+        ALU_BLT, ALU_BGT);
 end ALU_OP_LIB;

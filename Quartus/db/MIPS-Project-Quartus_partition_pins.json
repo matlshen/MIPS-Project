@@ -1,0 +1,401 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "OutPort[0]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[1]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[2]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[3]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[4]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[5]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[6]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[7]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[8]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[9]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[10]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[11]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[12]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[13]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[14]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[15]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[16]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[17]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[18]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[19]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[20]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[21]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[22]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[23]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[24]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[25]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[26]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[27]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[28]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[29]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[30]",
+					"strict" : false
+				},
+				{
+					"name" : "OutPort[31]",
+					"strict" : false
+				},
+				{
+					"name" : "IR31downto26[0]",
+					"strict" : false
+				},
+				{
+					"name" : "IR31downto26[1]",
+					"strict" : false
+				},
+				{
+					"name" : "IR31downto26[2]",
+					"strict" : false
+				},
+				{
+					"name" : "IR31downto26[3]",
+					"strict" : false
+				},
+				{
+					"name" : "IR31downto26[4]",
+					"strict" : false
+				},
+				{
+					"name" : "IR31downto26[5]",
+					"strict" : false
+				},
+				{
+					"name" : "IR5downto0[0]",
+					"strict" : false
+				},
+				{
+					"name" : "IR5downto0[1]",
+					"strict" : false
+				},
+				{
+					"name" : "IR5downto0[2]",
+					"strict" : false
+				},
+				{
+					"name" : "IR5downto0[3]",
+					"strict" : false
+				},
+				{
+					"name" : "IR5downto0[4]",
+					"strict" : false
+				},
+				{
+					"name" : "IR5downto0[5]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst",
+					"strict" : false
+				},
+				{
+					"name" : "MemWrite",
+					"strict" : false
+				},
+				{
+					"name" : "IorD",
+					"strict" : false
+				},
+				{
+					"name" : "IRWrite",
+					"strict" : false
+				},
+				{
+					"name" : "ALUSrcA",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_SRA",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_SRL",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_MULTU",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_MULT",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_ADDU",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_SUBU",
+					"strict" : false
+				},
+				{
+					"name" : "ALUSrcB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ALUSrcB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_OR",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_AND",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_XOR",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_SLL",
+					"strict" : false
+				},
+				{
+					"name" : "PCSource[0]",
+					"strict" : false
+				},
+				{
+					"name" : "PCSource[1]",
+					"strict" : false
+				},
+				{
+					"name" : "PCWrite",
+					"strict" : false
+				},
+				{
+					"name" : "PCWriteCond",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BEQ",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BNE",
+					"strict" : false
+				},
+				{
+					"name" : "IsSigned",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BLTE",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BGT",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BGTE",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BLEZ",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BGTZ",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BLTZ",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BGEZ",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_BLT",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_SLT",
+					"strict" : false
+				},
+				{
+					"name" : "ALUOPSel.ALU_SLTU",
+					"strict" : false
+				},
+				{
+					"name" : "MemRead",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[0]",
+					"strict" : false
+				},
+				{
+					"name" : "InPort0_en",
+					"strict" : false
+				},
+				{
+					"name" : "InPort1_en",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[1]",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[2]",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[3]",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[4]",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[5]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_LO_HI[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_LO_HI[0]",
+					"strict" : false
+				},
+				{
+					"name" : "MemToReg",
+					"strict" : false
+				},
+				{
+					"name" : "RegDst",
+					"strict" : false
+				},
+				{
+					"name" : "RegWrite",
+					"strict" : false
+				},
+				{
+					"name" : "JumpAndLink",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[6]",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[9]",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[7]",
+					"strict" : false
+				},
+				{
+					"name" : "InPortSwitches[8]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,162 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/19.1
+Ealu
+Z0 w1681048583
+Z1 DPx4 work 10 alu_op_lib 0 22 doD]o2zlRhGbzZF7;Wdb30
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z5 dC:/Dev/MIPS-Project/ModelSim/ALU_Test
+Z6 8C:/Dev/MIPS-Project/src/alu.vhd
+Z7 FC:/Dev/MIPS-Project/src/alu.vhd
+l0
+L6
+V`74iA^fI4QF56nN?0QkW90
+!s100 4?jaeNVV]39:F0EETdHgZ2
+Z8 OV;C;10.5b;63
+32
+Z9 !s110 1681050213
+!i10b 1
+Z10 !s108 1681050213.000000
+Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/alu.vhd|
+Z12 !s107 C:/Dev/MIPS-Project/src/alu.vhd|
+!i113 1
+Z13 o-work work -2002 -explicit
+Z14 tExplicit 1 CvgOpt 0
+Abhv
+R1
+R2
+R3
+R4
+Z15 DEx4 work 3 alu 0 22 `74iA^fI4QF56nN?0QkW90
+l20
+L19
+VDa84P;7=O7heMOJfhNojW1
+!s100 Tbc9d>Y>ihENA;N_Rc0Ag1
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Ealu_exhaustive_tb
+Z16 w1681050208
+R1
+R2
+R3
+R4
+R5
+Z17 8C:/Dev/MIPS-Project/testbenches/alu_exhaustive_tb.vhd
+Z18 FC:/Dev/MIPS-Project/testbenches/alu_exhaustive_tb.vhd
+l0
+L6
+VCVW<@NWb<gjiCOmhf3dGW0
+!s100 eegb_JNni[<a4NR<53g^?2
+R8
+32
+R9
+!i10b 1
+R10
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/testbenches/alu_exhaustive_tb.vhd|
+Z20 !s107 C:/Dev/MIPS-Project/testbenches/alu_exhaustive_tb.vhd|
+!i113 1
+R13
+R14
+Aexhaustive
+R15
+R1
+R2
+R3
+R4
+DEx4 work 17 alu_exhaustive_tb 0 22 CVW<@NWb<gjiCOmhf3dGW0
+l23
+L9
+VQ5^^HkQg4WYdVgSS]C9IO0
+!s100 lj^hWn_=O286=FW:YSoe^3
+R8
+32
+R9
+!i10b 1
+R10
+R19
+R20
+!i113 1
+R13
+R14
+Palu_op_lib
+R3
+R4
+w1681010389
+R5
+8C:/Dev/MIPS-Project/src/libraries/ALU_OP_LIB.vhd
+FC:/Dev/MIPS-Project/src/libraries/ALU_OP_LIB.vhd
+l0
+L4
+VdoD]o2zlRhGbzZF7;Wdb30
+!s100 J5z]e`6:L97`HiDlY6Z9a3
+R8
+32
+R9
+!i10b 1
+R10
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/libraries/ALU_OP_LIB.vhd|
+!s107 C:/Dev/MIPS-Project/src/libraries/ALU_OP_LIB.vhd|
+!i113 1
+R13
+R14
+Ealu_simple_tb
+Z21 w1681048603
+R1
+R2
+R3
+R4
+R5
+Z22 8C:/Dev/MIPS-Project/testbenches/alu_simple_tb.vhd
+Z23 FC:/Dev/MIPS-Project/testbenches/alu_simple_tb.vhd
+l0
+L6
+V23@KN;;o;ZeXKG_a4<QEb0
+!s100 57j=dgUUn8iVjF9`EKP?52
+R8
+32
+R9
+!i10b 1
+R10
+Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/testbenches/alu_simple_tb.vhd|
+Z25 !s107 C:/Dev/MIPS-Project/testbenches/alu_simple_tb.vhd|
+!i113 1
+R13
+R14
+Asimple
+R15
+R1
+R2
+R3
+R4
+Z26 DEx4 work 13 alu_simple_tb 0 22 23@KN;;o;ZeXKG_a4<QEb0
+l22
+L9
+Z27 V[7YkOMDZO1OW^l6P2JkoX3
+Z28 !s100 Lg=c3YY7kzE`n:ZBY:TOJ1
+R8
+32
+R9
+!i10b 1
+R10
+R24
+R25
+!i113 1
+R13
+R14

@@ -10,16 +10,16 @@ architecture EXHAUSTIVE of alu_exhaustive_tb is
     constant WIDTH      : positive := 8;
 	signal input1       : std_logic_vector(WIDTH-1 downto 0) := (others=>'0');
     signal input2       : std_logic_vector(WIDTH-1 downto 0) := (others=>'0');
-    signal op           : std_logic_vector(ALU_SEL_SIZE-1 downto 0) := (others=>'0');
+    signal op           : ALU_OP_t;
     signal shift        : std_logic_vector(4 downto 0) := (others=>'0');
     signal result       : std_logic_vector(WIDTH-1 downto 0);
     signal result_hi    : std_logic_vector(WIDTH-1 downto 0);
     signal branch       : std_logic := '0';
 
-    signal done        : std_logic := '0';
-    signal total       : std_logic_vector(width*2-1 downto 0) := (others=>'0');
-    signal expected    : std_logic_vector(width-1 downto 0) := (others=>'0');
-    signal expected_hi : std_logic_vector(width-1 downto 0) := (others=>'0');
+    signal expected     : std_logic_vector(WIDTH*2-1 downto 0) := (others=>'0');
+    signal expected_lo  : std_logic_vector(WIDTH-1 downto 0);
+    signal expected_hi  : std_logic_vector(WIDTH-1 downto 0);
+    signal done         : std_logic := '0';
 begin --TB
 	UUT: entity work.alu
         generic map ( WIDTH => WIDTH )
@@ -29,7 +29,8 @@ begin --TB
             op          => op,
             shift       => shift,
             result      => result,
-            result_hi   => result_hi);
+            result_hi   => result_hi,
+            branch      => branch);
 
     process
     begin --process
@@ -39,161 +40,186 @@ begin --TB
                 input1 <= std_logic_vector(to_unsigned(i, WIDTH));
                 input2 <= std_logic_vector(to_unsigned(j, WIDTH));
 
-                -- start arithmetic operations
 
-                op <= OP_ADD_U;
+                op <= ALU_ADDU;
+                expected_lo <= std_logic_vector(to_unsigned(i, WIDTH)+to_unsigned(j, WIDTH));
+                expected_hi <= std_logic_vector(to_unsigned(0,WIDTH));
+                expected <= expected_hi&expected_lo;
                 wait for 10 ns;
-                assert(result = std_logic_vector(to_unsigned(i, WIDTH)+to_unsigned(j, WIDTH))) report "OP_ADD_U result incorrect" severity failure;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_ADD_U result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_ADD_U branch incorrect" severity failure;
+                assert(result = expected_lo) report "ALU_ADDU result incorrect" severity failure;
+                assert(result_hi = expected_hi) report "ALU_ADDU result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_ADDU branch incorrect" severity failure;
 
-                op <= OP_SUB_U;
+                op <= ALU_SUBU;
+                expected_lo <= std_logic_vector(to_unsigned(i, WIDTH)-to_unsigned(j, WIDTH));
+                expected_hi <= std_logic_vector(to_unsigned(0,WIDTH));
+                expected <= expected_hi&expected_lo;
                 wait for 10 ns;
-                assert(result = std_logic_vector(to_unsigned(i, WIDTH)-to_unsigned(j, WIDTH))) report "OP_SUB_U result incorrect" severity failure;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_SUB_U result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_SUB_U branch incorrect" severity failure;
+                assert(result = expected_lo) report "ALU_SUBU result incorrect" severity failure;
+                assert(result_hi = expected_hi) report "ALU_SUBU result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_SUBU branch incorrect" severity failure;
 
-                op <= OP_MULT_S;
+                op <= ALU_MULT;
+                expected <= std_logic_vector(to_signed(i, WIDTH)*to_signed(j, WIDTH));
+                expected_lo <= expected(WIDTH-1 downto 0);
+                expected_hi <= expected(WIDTH*2-1 downto WIDTH);
                 wait for 10 ns;
-                assert(result_hi & result = std_logic_vector(to_signed(i, WIDTH)*to_signed(j, WIDTH))) report "OP_MULT_S result&result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_MULT_S branch incorrect" severity failure;
+                assert(result_hi & result = expected) report "ALU_MULT result&result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_MULT branch incorrect" severity failure;
 
-                op <= OP_MULT_U;
+                op <= ALU_MULTU;
+                expected <= std_logic_vector(to_unsigned(i, WIDTH)*to_unsigned(j, WIDTH));
+                expected_lo <= expected(WIDTH-1 downto 0);
+                expected_hi <= expected(WIDTH*2-1 downto WIDTH);
                 wait for 10 ns;
-                assert(result_hi&result = std_logic_vector(to_unsigned(i, WIDTH)*to_unsigned(j, WIDTH))) report "OP_MULT_U result&result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_MULT_U branch incorrect" severity failure;
+                assert(result_hi&result = expected) report "ALU_MULTU result&result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_MULTU branch incorrect" severity failure;
 
-                op <= OP_AND;
+                op <= ALU_AND;
+                expected_lo <= std_logic_vector(to_unsigned(i, WIDTH) and to_unsigned(j, WIDTH));
+                expected_hi <= std_logic_vector(to_unsigned(0,WIDTH));
+                expected <= expected_hi&expected_lo;
                 wait for 10 ns;
-                assert(result = std_logic_vector(to_unsigned(i, WIDTH) and to_unsigned(j, WIDTH))) report "OP_AND result incorrect" severity failure;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_AND result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_AND branch incorrect" severity failure;
+                assert(result = expected_lo) report "ALU_AND result incorrect" severity failure;
+                assert(result_hi = expected_hi) report "ALU_AND result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_AND branch incorrect" severity failure;
 
-                op <= OP_OR;
+                op <= ALU_OR;
+                expected_lo <= std_logic_vector(to_unsigned(i, WIDTH) or to_unsigned(j, WIDTH));
+                expected_hi <= std_logic_vector(to_unsigned(0,WIDTH));
+                expected <= expected_hi&expected_lo;
                 wait for 10 ns;
-                assert(result = std_logic_vector(to_unsigned(i, WIDTH) or to_unsigned(j, WIDTH))) report "OP_OR result incorrect" severity failure;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_OR result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_OR branch incorrect" severity failure;
+                assert(result = expected_lo) report "ALU_OR result incorrect" severity failure;
+                assert(result_hi = expected_hi) report "ALU_OR result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_OR branch incorrect" severity failure;
 
-                op <= OP_XOR;
+                op <= ALU_XOR;
+                expected_lo <= std_logic_vector(to_unsigned(i, WIDTH) xor to_unsigned(j, WIDTH));
+                expected_hi <= std_logic_vector(to_unsigned(0,WIDTH));
+                expected <= expected_hi&expected_lo;
                 wait for 10 ns;
-                assert(result = std_logic_vector(to_unsigned(i, WIDTH) xor to_unsigned(j, WIDTH))) report "OP_XOR result incorrect" severity failure;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_XOR result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_XOR branch incorrect" severity failure;
+                assert(result = expected_lo) report "ALU_XOR result incorrect" severity failure;
+                assert(result_hi = expected_hi) report "ALU_XOR result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_XOR branch incorrect" severity failure;
 
-                -- end arithmetic operations
-                -- start shift operations
 
-                for k in 0 to 2**5-1 loop -- k = shift
+                for k in 0 to 2**5-1 loop
                     
                     shift <= std_logic_vector(to_unsigned(k,5));
                     wait for 10 ns;
 
-                    op <= OP_SHR_L;
+                    op <= ALU_SRL;
+                    expected_lo <= std_logic_vector(SHIFT_RIGHT(to_unsigned(i, WIDTH), k));
+                    expected_hi <= std_logic_vector(to_unsigned(0,WIDTH));
+                    expected <= expected_hi&expected_lo;
                     wait for 10 ns;
-                    assert(result = std_logic_vector(SHIFT_RIGHT(to_unsigned(i, WIDTH), k))) report "OP_SHR_L result incorrect" severity failure;
-                    assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_SHR_L result_hi incorrect" severity failure;
-                    assert(branch = '0') report "OP_SHR_L branch incorrect" severity failure;
+                    assert(result = expected_lo) report "ALU_SRL result incorrect" severity failure;
+                    assert(result_hi = expected_hi) report "ALU_SRL result_hi incorrect" severity failure;
+                    assert(branch = '0') report "ALU_SRL branch incorrect" severity failure;
 
-                    op <= OP_SHL_L;
+                    op <= ALU_SLL;
+                    expected_lo <= std_logic_vector(SHIFT_LEFT(to_unsigned(i, WIDTH), k));
+                    expected_hi <= std_logic_vector(to_unsigned(0,WIDTH));
+                    expected <= expected_hi&expected_lo;
                     wait for 10 ns;
-                    assert(result = std_logic_vector(SHIFT_LEFT(to_unsigned(i, WIDTH), k))) report "OP_SHL_L result incorrect" severity failure;
-                    assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_SHL_L result_hi incorrect" severity failure;
-                    assert(branch = '0') report "OP_SHL_L branch incorrect" severity failure;
+                    assert(result = expected_lo) report "ALU_SLL result incorrect" severity failure;
+                    assert(result_hi = expected_hi) report "ALU_SLL result_hi incorrect" severity failure;
+                    assert(branch = '0') report "ALU_SLL branch incorrect" severity failure;
 
-                    op <= OP_SHR_A;
+                    op <= ALU_SRA;
+                    expected_lo <= std_logic_vector(SHIFT_RIGHT(to_signed(i, WIDTH), k));
+                    expected_hi <= std_logic_vector(to_unsigned(0,WIDTH));
+                    expected <= expected_hi&expected_lo;
                     wait for 10 ns;
-                    assert(result = std_logic_vector(SHIFT_RIGHT(to_signed(i, WIDTH), k))) report "OP_SHR_A result incorrect" severity failure;
-                    assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_SHR_A result_hi incorrect" severity failure;
-                    assert(branch = '0') report "OP_SHR_A branch incorrect" severity failure;
+                    assert(result = expected_lo) report "ALU_SRA result incorrect" severity failure;
+                    assert(result_hi = expected_hi) report "ALU_SRA result_hi incorrect" severity failure;
+                    assert(branch = '0') report "ALU_SRA branch incorrect" severity failure;
 
                 end loop; 
                 
-                -- end shift operations
-                -- start set ons
 
-                op <= OP_SLT_S;
+                op <= ALU_SLT;
                 wait for 10 ns;
                 if (to_signed(i, WIDTH) < to_signed(j, WIDTH)) then
-                    assert(result = std_logic_vector(to_unsigned(1,WIDTH))) report "OP_SLT_S result incorrect" severity failure;
+                    assert(result = std_logic_vector(to_unsigned(1,WIDTH))) report "ALU_SLT result incorrect" severity failure;
                 else
-                    assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_SLT_S result incorrect" severity failure;
+                    assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_SLT result incorrect" severity failure;
                 end if;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_SLT_S result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_SLT_S branch incorrect" severity failure;
+                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_SLT result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_SLT branch incorrect" severity failure;
 
-                op <= OP_SLT_U;
+                op <= ALU_SLTU;
                 wait for 10 ns;
                 if (to_unsigned(i, WIDTH) < to_unsigned(j, WIDTH)) then
-                    assert(result = std_logic_vector(to_unsigned(1,WIDTH))) report "OP_SLT_U result incorrect" severity failure;
+                    assert(result = std_logic_vector(to_unsigned(1,WIDTH))) report "ALU_SLTU result incorrect" severity failure;
                 else
-                    assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_SLT_U result incorrect" severity failure;
+                    assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_SLTU result incorrect" severity failure;
                 end if;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_SLT_U result_hi incorrect" severity failure;
-                assert(branch = '0') report "OP_SLT_U branch incorrect" severity failure;
+                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_SLTU result_hi incorrect" severity failure;
+                assert(branch = '0') report "ALU_SLTU branch incorrect" severity failure;
 
                 -- end set ons
                 -- start branches
 
-                op <= OP_BEQ;
+                op <= ALU_BEQ;
                 wait for 10 ns;
                 if (to_signed(i, WIDTH) = to_signed(j, WIDTH)) then
-                    assert(branch = '1') report "OP_BEQ branch incorrect" severity failure;
+                    assert(branch = '1') report "ALU_BEQ branch incorrect" severity failure;
                 else
-                    assert(branch = '0') report "OP_BEQ branch incorrect" severity failure;
+                    assert(branch = '0') report "ALU_BEQ branch incorrect" severity failure;
                 end if;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BEQ result_hi incorrect" severity failure;
-                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BEQ result incorrect" severity failure;
+                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BEQ result_hi incorrect" severity failure;
+                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BEQ result incorrect" severity failure;
 
-                op <= OP_BNE;
+                op <= ALU_BNE;
                 wait for 10 ns;
                 if (to_signed(i, WIDTH) = to_signed(j, WIDTH)) then
-                    assert(branch = '0') report "OP_BNE branch incorrect" severity failure;
+                    assert(branch = '0') report "ALU_BNE branch incorrect" severity failure;
                 else
-                    assert(branch = '1') report "OP_BNE branch incorrect" severity failure;
+                    assert(branch = '1') report "ALU_BNE branch incorrect" severity failure;
                 end if;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BNE result_hi incorrect" severity failure;
-                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BNE result incorrect" severity failure;
+                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BNE result_hi incorrect" severity failure;
+                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BNE result incorrect" severity failure;
 
-                op <= OP_BLTE;
+                op <= ALU_BLEZ;
                 wait for 10 ns;
                 if (to_signed(i, WIDTH) <= to_signed(0, WIDTH)) then
-                    assert(branch = '1') report "OP_BLTE branch incorrect" severity failure;
+                    assert(branch = '1') report "ALU_BLEZ branch incorrect" severity failure;
                 else
-                    assert(branch = '0') report "OP_BLTE branch incorrect" severity failure;
+                    assert(branch = '0') report "ALU_BLEZ branch incorrect" severity failure;
                 end if;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BLTE result_hi incorrect" severity failure;
-                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BLTE result incorrect" severity failure;
+                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BLEZ result_hi incorrect" severity failure;
+                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BLEZ result incorrect" severity failure;
 
-                op <= OP_BGT;
+                op <= ALU_BGTZ;
                 wait for 10 ns;
                 if (to_signed(i, WIDTH) > to_signed(0, WIDTH)) then
-                    assert(branch = '1') report "OP_BGT branch incorrect" severity failure;
+                    assert(branch = '1') report "ALU_BGTZ branch incorrect" severity failure;
                 else
-                    assert(branch = '0') report "OP_BGT branch incorrect" severity failure;
+                    assert(branch = '0') report "ALU_BGTZ branch incorrect" severity failure;
                 end if;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BGT result_hi incorrect" severity failure;
-                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BGT result incorrect" severity failure;
+                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BGTZ result_hi incorrect" severity failure;
+                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BGTZ result incorrect" severity failure;
 
-                op <= OP_BLT;
+                op <= ALU_BLTZ;
                 wait for 10 ns;
                 if (to_signed(i, WIDTH) < to_signed(0, WIDTH)) then
-                    assert(branch = '1') report "OP_BLT branch incorrect" severity failure;
+                    assert(branch = '1') report "ALU_BLTZ branch incorrect" severity failure;
                 else
-                    assert(branch = '0') report "OP_BLT branch incorrect" severity failure;
+                    assert(branch = '0') report "ALU_BLTZ branch incorrect" severity failure;
                 end if;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BLT result_hi incorrect" severity failure;
-                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BLT result incorrect" severity failure;
+                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BLTZ result_hi incorrect" severity failure;
+                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BLTZ result incorrect" severity failure;
 
-                op <= OP_BGTE;
+                op <= ALU_BGEZ;
                 wait for 10 ns;
                 if (to_signed(i, WIDTH) >= to_signed(0, WIDTH)) then
-                    assert(branch = '1') report "OP_BGTE branch incorrect" severity failure;
+                    assert(branch = '1') report "ALU_BGEZ branch incorrect" severity failure;
                 else
-                    assert(branch = '0') report "OP_BGTE branch incorrect" severity failure;
+                    assert(branch = '0') report "ALU_BGEZ branch incorrect" severity failure;
                 end if;
-                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BGTE result_hi incorrect" severity failure;
-                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "OP_BGTE result incorrect" severity failure;
+                assert(result_hi = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BGEZ result_hi incorrect" severity failure;
+                assert(result = std_logic_vector(to_unsigned(0,WIDTH))) report "ALU_BGEZ result incorrect" severity failure;
 
                 --end branches
 

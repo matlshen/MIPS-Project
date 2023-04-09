@@ -13,7 +13,7 @@ entity alu is
     op        : in ALU_OP_t;
     result    : out std_logic_vector(WIDTH-1 downto 0);
     result_hi : out std_logic_vector(WIDTH-1 downto 0);
-    branch    : out std_logic_vector);
+    branch    : out std_logic);
 end alu;
 
 architecture bhv of alu is  
@@ -54,72 +54,102 @@ begin --bhv
         result <= input1 xor input2;
 
       when ALU_SRL =>   -- shift right logical
-        result => std_logic_vector(shift_right(unsigned(input1), to_integer(unsigned(shift))));
+        result <= std_logic_vector(shift_right(unsigned(input1), to_integer(unsigned(shift))));
 
       when ALU_SLL =>   -- shift left logical
-        result => std_logic_vector(shift_left(unsigned(input1), to_integer(unsigned(shift))));
+        result <= std_logic_vector(shift_left(unsigned(input1), to_integer(unsigned(shift))));
 
       when ALU_SRA =>   -- shift right arithmetic
-        result => std_logic_vector(shift_right(signed(input1), to_integer(unsigned(shift))));
+        result <= std_logic_vector(shift_right(signed(input1), to_integer(unsigned(shift))));
 
       when ALU_SLT =>   -- set on less than signed
-        if (signed(input1) < signed(inputs2)) then
-          result <= std_logic_vector(to_unsinged(1, width));
+        if (signed(input1) < signed(input2)) then
+          result <= std_logic_vector(to_unsigned(1, width));
         else
           result <= (others => '0');
         end if;
 
       when ALU_SLTU =>  -- set on less than unsigned
-        if (unsigned(input1) < unsigned(inputs2)) then
-          result <= std_logic_vector(to_unsinged(1, width));
+        if (unsigned(input1) < unsigned(input2)) then
+          result <= std_logic_vector(to_unsigned(1, width));
         else
           result <= (others => '0');
         end if;
 
       when ALU_BEQ =>   -- branch if equal
         if (signed(input1) = signed(input2)) then
-          branch <= '1'
+          branch <= '1';
         else
           branch <= '0';
         end if;
 
       when ALU_BNE =>   -- branch if not equal
         if (signed(input1) /= signed(input2)) then
-          branch <= '1'
+          branch <= '1';
         else
           branch <= '0';
         end if;
 
       when ALU_BLEZ =>  -- branch if less than or equal to 0
         if (signed(input1) <= 0) then
-          branch <= '1'
+          branch <= '1';
         else
           branch <= '0';
         end if;
 
       when ALU_BGEZ =>  -- branch if greater than or equal to 0
         if (signed(input1) >= 0) then
-          branch <= '1'
+          branch <= '1';
         else
           branch <= '0';
         end if;
 
       when ALU_BLTZ =>  -- branch if less than 0
         if (signed(input1) < 0) then
-          branch <= '1'
+          branch <= '1';
         else
           branch <= '0';
         end if;
 
       when ALU_BGTZ =>  -- branch if greater than 0
         if (signed(input1) > 0) then
-          branch <= '1'
+          branch <= '1';
+        else
+          branch <= '0';
+        end if;
+      
+      when ALU_BLTE =>  -- branch if less than or equal
+        if (signed(input1) <= signed(input2)) then
+          branch <= '1';
+        else
+          branch <= '0';
+        end if;
+
+      when ALU_BGTE =>  -- branch if greater than or equal
+        if (signed(input1) >= signed(input2)) then
+          branch <= '1';
+        else
+          branch <= '0';
+        end if;
+
+      when ALU_BLT =>   -- branch if less than
+        if (signed(input1) < signed(input2)) then
+          branch <= '1';
+        else
+          branch <= '0';
+        end if;
+
+      when ALU_BGT =>   -- branch if greater than
+        if (signed(input1) > signed(input2)) then
+          branch <= '1';
         else
           branch <= '0';
         end if;
 
       when others =>
         null;
+    end case; -- op
+
   end process;
 
 end bhv;
