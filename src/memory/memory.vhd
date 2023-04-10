@@ -4,20 +4,20 @@ use ieee.numeric_std.all;
 
 entity memory is
     port (
-        clk       : in std_logic;
-        rst       : in std_logic;
+        clk         : in std_logic;
+        rst         : in std_logic;
         -- From datapath
-        address   : in  std_logic_vector(31 downto 0);
-        data      : out std_logic_vector(31 downto 0);
-        RegB      : in  std_logic_vector(31 downto 0);
+        address     : in  std_logic_vector(31 downto 0);
+        data        : out std_logic_vector(31 downto 0);
+        RegB        : in  std_logic_vector(31 downto 0);
         -- From Controller
-        MemRead   : in std_logic;
-        MemWrite  : in std_logic;
+        MemRead     : in std_logic;
+        MemWrite    : in std_logic;
         -- From Top Level / Interface
-        InPort1_en : in  std_logic;
-        InPort0_en : in  std_logic;
-        InPort     : in  std_logic_vector(31 downto 0); -- InPort0/InPort1
-        OutPort    : out std_logic_vector(31 downto 0)
+        InPort1_en  : in  std_logic;
+        InPort0_en  : in  std_logic;
+        InPort      : in  std_logic_vector(31 downto 0); -- InPort0/InPort1
+        OutPort     : out std_logic_vector(31 downto 0)
     );
 end memory;
 
@@ -34,8 +34,7 @@ architecture ARCH of memory is
 
 begin -- ARCH
 
-    -- before the clock edge hits, we want to ensure that we are capturing the input to the circuit in the proper place
-    -- therefore, the logic that selects between writing to the out port or the ram MUST be combinational logic
+    -- Write Process
     process(address, MemWrite)
     begin --process
 
@@ -54,20 +53,19 @@ begin -- ARCH
         -- setting the enables appropriately (as above) allows the capture into ONE of those when the clock edge comes
     end process;
 
-    process (clk,rst)
+    -- Read Process
+    process (MemRead, address)
     begin -- process
-        if (rst = '1') then -- select the 0 output of the mux. this is not the output from ANY of the inputs to the mux that we care about
-            OutMuxSel <= "11";
-        elsif (rising_edge(clk)) then 
-            if (MemRead = '1') then -- update the mux select if we're reading
-                if (address = x"0000FFF8") then -- mux select input 0 -> InPort0 
-                    OutMuxSel <= "00"; -- INPORT0 -> $0000FFF8
-                elsif (address = x"0000FFFC") then -- mux select input 1 -> InPort01
-                    OutMuxSel <= "01";  -- INPORT1 -> $0000FFFC
-                else -- mux select input 2 -> RAM
-                    OutMuxSel <= "10"; -- RAM -> any address other then the above
-                end if;
+        if (MemRead = '1') then -- update the mux select if we're reading
+            if (address = x"0000FFF8") then -- mux select input 0 -> InPort0 
+                OutMuxSel <= "00"; -- INPORT0 -> $0000FFF8
+            elsif (address = x"0000FFFC") then -- mux select input 1 -> InPort01
+                OutMuxSel <= "01";  -- INPORT1 -> $0000FFFC
+            else -- Any other address is in RAM
+                OutMuxSel <= "10"; -- RAM
             end if;
+        else
+            OutMuxSel <= "11";  -- Read 0s if MemRead is not enabled
         end if;
     end process;
 
@@ -84,8 +82,7 @@ begin -- ARCH
             in1    => InPort1,
             in2    => RamOut,
             in3    => (others => '0'),
-            output => data
-        );
+            output => data);
 
     -- wont be reset by the circuit-wide button reset, will store a
     -- new value whenever the store button is pressed and we select
@@ -126,8 +123,7 @@ begin -- ARCH
             clock   => clk,
             data	=> RegB,
             wren	=> Ram_en,
-            q		=> RamOut
-        );
+            q		=> RamOut);
 
     -- output is controlled by writing to address $0000FFFC. output to the 7 
     -- segment LEDs onboard the MAX 10 DElite

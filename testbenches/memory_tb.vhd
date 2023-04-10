@@ -41,49 +41,33 @@ begin --TB
     process
     begin
 
-        done <= '0';
-        rst   <= '1';
-        for i in 0 to 9 loop
-            wait until rising_edge(clk); -- wait for 10 cycles
-        end loop;
+        -- Reset the memory
+        rst <= '1';
+        wait until rising_edge(clk);
+        wait until rising_edge(clk);
         rst <= '0';
 
-        -- load both in ports with 0
-        InPort <= x"00000000";
-        InPort1_en <= '1';
-        wait until rising_edge(clk);
-        report "Write default value of 0x00000000 to inport1 here." severity note;
-        InPort1_en <= '0';
-        InPort0_en <= '1';
-        wait until rising_edge(clk);
-        InPort0_en <= '0';
-        report "Write default value of 0x00000000 to inport0 here." severity note;
-
-        -- start testing
-
         -- Write 0x0A0A0A0A to byte address 0x00000000
+        RegB <= x"0A0A0A0A";    -- data
+        address <= x"00000000"; -- address
         MemWrite <= '1';
-        RegB <= x"0A0A0A0A";
-        address <= x"00000000";
         wait until rising_edge(clk);
-        MemWrite <= '0';
-        -- no assertion, setting up for future tests
         report "Write 0x0A0A0A0A to byte address 0x00000000 here." severity note;
 
         -- Write 0xF0F0F0F0 to byte address 0x00000004
-        MemWrite <= '1';
         RegB <= x"F0F0F0F0";
         address <= x"00000004";
+        MemWrite <= '1';
         wait until rising_edge(clk);
-        MemWrite <= '0';
-        -- no assertion, setting up for future tests
         report "Write 0xF0F0F0F0 to byte address 0x00000004 here." severity note;
 
         wait until rising_edge(clk);
+        MemWrite <= '0';
 
         -- Read from byte address 0x00000000 (should show 0x0A0A0A0A on read data output)
         MemRead <= '1';
         address <= x"00000000";
+        wait until rising_edge(clk);
         wait until rising_edge(clk);
         MemRead <= '0';
         -- assert(data = x"0A0A0A0A") report "Read from byte address 0x00000000 incorrect (should show 0x0A0A0A0A)" severity warning;
@@ -93,6 +77,7 @@ begin --TB
         MemRead <= '1';
         address <= x"00000001";
         wait until rising_edge(clk);
+        wait until rising_edge(clk);
         MemRead <= '0';
         -- assert(data = x"0A0A0A0A") report "Read from byte address 0x00000001 incorrect (should show 0x0A0A0A0A)" severity warning;
         report "Read from byte address 0x00000001 here." severity note;
@@ -101,6 +86,7 @@ begin --TB
         MemRead <= '1';
         address <= x"00000004";
         wait until rising_edge(clk);
+        wait until rising_edge(clk);
         MemRead <= '0';
         -- assert(data = x"F0F0F0F0") report "Read from byte address 0x00000004 incorrect (should show 0xF0F0F0F0)" severity warning;
         report "Read from byte address 0x00000004 here." severity note;
@@ -108,6 +94,7 @@ begin --TB
         -- Read from byte address 0x00000005 (should show 0xF0F0F0F0 on read data output)
         MemRead <= '1';
         address <= x"00000005";
+        wait until rising_edge(clk);
         wait until rising_edge(clk);
         MemRead <= '0';
         -- assert(data = x"F0F0F0F0") report "Read from byte address 0x00000005 incorrect (should show 0xF0F0F0F0)" severity warning;

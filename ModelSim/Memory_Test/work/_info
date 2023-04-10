@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/Dev/MIPS-Project/ModelSim/ALU_Test
 Ememory
-Z0 w1681064078
+Z0 w1681094813
 Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
@@ -18,13 +18,13 @@ Z5 8C:/Dev/MIPS-Project/src/memory/memory.vhd
 Z6 FC:/Dev/MIPS-Project/src/memory/memory.vhd
 l0
 L5
-VGT<[F:QC@`Aa3M@]cM9z_0
-!s100 W;^<haQfOfg:2UeACDo_o3
+Vg^;WHV3I;_RKTC9HaBPRl3
+!s100 =czW4A8Fj2542i`9@o:5f3
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1681065073
+Z8 !s110 1681094818
 !i10b 1
-Z9 !s108 1681065073.000000
+Z9 !s108 1681094818.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/memory/memory.vhd|
 Z11 !s107 C:/Dev/MIPS-Project/src/memory/memory.vhd|
 !i113 1
@@ -38,11 +38,11 @@ Z17 DEx4 work 7 mux_4x1 0 22 AZl1_02>gkB[0KmE5Ukc`1
 R1
 R2
 R3
-Z18 DEx4 work 6 memory 0 22 GT<[F:QC@`Aa3M@]cM9z_0
+Z18 DEx4 work 6 memory 0 22 g^;WHV3I;_RKTC9HaBPRl3
 l35
 L24
-V@BYdMVmT=_PaDO=hi_PQ12
-!s100 5NGHKEYaTfDWHNN3S8bBh0
+VPR^4PWAAJkC6HgG<mjMPI3
+!s100 D5>Q`makIbDW@G>][i58X1
 R7
 32
 R8
@@ -54,7 +54,7 @@ R11
 R12
 R13
 Ememory_tb
-Z19 w1681050717
+Z19 w1681094659
 R1
 R2
 R3
@@ -83,8 +83,8 @@ R3
 DEx4 work 9 memory_tb 0 22 _kiS2gc@klE4Vk3RdCF4^2
 l21
 L8
-Ve90Y7aa9^PG?;d^`:NkZC0
-!s100 FzWBNQZDn;dkao[GAQ:Gz1
+VciXC]iU@[L4_<=;:=le1D0
+!s100 Fja>YKWE68n81ImSV`7aJ3
 R7
 32
 R8
@@ -178,7 +178,7 @@ R32
 R12
 R13
 Eram
-Z35 w1681065065
+Z35 w1681094526
 R14
 R2
 R3
@@ -206,8 +206,8 @@ R3
 R15
 l59
 L55
-V6G]hU@9BFBZ15R]Bk`VS]1
-!s100 H5[<8fP_0=gF]<Dk49SDL1
+V_8:jG7ZE`>1`_nc`4dVE71
+!s100 PQ=7LhOYF=m7mE53zdOI60
 R7
 32
 R8
@@ -232,11 +232,11 @@ V3CJ]P?gdb]:Q=6D2VncW33
 !s100 Y3e5QD8L_0>7F347j45FE2
 R7
 32
-R8
+Z42 !s110 1681094817
 !i10b 1
-R9
-Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/primitives/reg.vhd|
-Z43 !s107 C:/Dev/MIPS-Project/src/primitives/reg.vhd|
+Z43 !s108 1681094817.000000
+Z44 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Dev/MIPS-Project/src/primitives/reg.vhd|
+Z45 !s107 C:/Dev/MIPS-Project/src/primitives/reg.vhd|
 !i113 1
 R12
 R13
@@ -251,11 +251,11 @@ VnROG;DYaAbO`BM]EE0@dN0
 !s100 zh8MZj3NNnVPWBOgIbneA3
 R7
 32
-R8
-!i10b 1
-R9
 R42
+!i10b 1
 R43
+R44
+R45
 !i113 1
 R12
 R13

@@ -7,6 +7,15 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity mux_2x1
 -- Compiling architecture bhv of mux_2x1
 
+} {} {}} C:/Dev/MIPS-Project/src/memory/ram.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/memory/ram.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package altera_mf_components
+-- Compiling entity ram
+-- Compiling architecture SYN of ram
+
 } {} {}} C:/Dev/MIPS-Project/src/primitives/mux_4x1.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/primitives/mux_4x1.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
@@ -15,19 +24,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package NUMERIC_STD
 -- Compiling entity mux_4x1
 -- Compiling architecture bhv of mux_4x1
-
-} {} {}} C:/Dev/MIPS-Project/src/memory/memory.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/memory/memory.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity memory
--- Compiling architecture ARCH of memory
--- Loading entity mux_4x1
--- Loading entity reg
--- Loading package altera_mf_components
--- Loading entity ram
 
 } {} {}} C:/Dev/MIPS-Project/src/primitives/reg.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/primitives/reg.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
