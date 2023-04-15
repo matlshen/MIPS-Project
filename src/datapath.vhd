@@ -30,7 +30,6 @@ entity datapath is
         RegDst          : in std_logic;
         IR31downto26    : out std_logic_vector(5 downto 0);
         -- ALU Control
-        ALUOPSel        : in ALU_OP_t;
         HI_en           : in std_logic;
         LO_en           : in std_logic;
         ALU_LO_HI       : in std_logic_vector(1 downto 0);
