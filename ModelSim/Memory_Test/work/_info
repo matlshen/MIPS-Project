@@ -23,9 +23,9 @@ V`74iA^fI4QF56nN?0QkW90
 !s100 4?jaeNVV]39:F0EETdHgZ2
 Z8 OV;C;10.5b;63
 32
-Z9 !s110 1681745428
+Z9 !s110 1681746840
 !i10b 1
-Z10 !s108 1681745428.000000
+Z10 !s108 1681746840.000000
 Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/alu.vhd|
 Z12 !s107 C:/dev/MIPS-Project/src/alu.vhd|
 !i113 1
@@ -73,7 +73,7 @@ R10
 R13
 R14
 Econtroller
-Z15 w1681745072
+Z15 w1681746674
 Z16 DPx4 work 13 mips_func_lib 0 22 76>]hbIRKOCf5`:nOg1a00
 R1
 R2
@@ -173,9 +173,9 @@ VQ2FiC[zZ2PWC0]0SS^Fbg0
 !s100 z58GjJ50LDjdF<d1o?Ah50
 R8
 32
-Z31 !s110 1681745429
+Z31 !s110 1681746841
 !i10b 1
-Z32 !s108 1681745429.000000
+Z32 !s108 1681746841.000000
 Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/primitives/decoder7seg.vhd|
 Z34 !s107 C:/dev/MIPS-Project/src/primitives/decoder7seg.vhd|
 !i113 1
@@ -200,7 +200,7 @@ R34
 R13
 R14
 Ememory
-Z36 w1681745391
+Z36 w1681746833
 R2
 R3
 R4
@@ -232,8 +232,8 @@ R4
 Z45 DEx4 work 6 memory 0 22 g^;WHV3I;_RKTC9HaBPRl3
 l35
 L24
-VLZW5Pe4QhUDFXhf261BUf0
-!s100 niDX]IbJg:]IdKQ5eaZjL0
+VzHnGj2lOGK<e2hOA9>[MS3
+!s100 GPHj@B:J_E^CBH8lLUB4n1
 R8
 32
 R9
@@ -370,7 +370,7 @@ R8
 32
 R31
 !i10b 1
-R32
+R10
 Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/primitives/mux_2x1.vhd|
 Z64 !s107 C:/dev/MIPS-Project/src/primitives/mux_2x1.vhd|
 !i113 1
@@ -389,7 +389,7 @@ R8
 32
 R31
 !i10b 1
-R32
+R10
 R63
 R64
 !i113 1
@@ -532,11 +532,11 @@ VNaHnH8NmB2@k:5YFmdXj>2
 !s100 Q@F^EeVlY>JC34TE]RVFA2
 R8
 32
-R9
+Z80 !s110 1681746839
 !i10b 1
-R10
-Z80 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/registers_file.vhd|
-Z81 !s107 C:/dev/MIPS-Project/src/registers_file.vhd|
+Z81 !s108 1681746839.000000
+Z82 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/registers_file.vhd|
+Z83 !s107 C:/dev/MIPS-Project/src/registers_file.vhd|
 !i113 1
 R13
 R14
@@ -551,11 +551,11 @@ V:U^z<IDTYATNV8_gOidFB2
 !s100 ]GA`dW1XG8]W^FP[Y5;QD1
 R8
 32
-R9
-!i10b 1
-R10
 R80
+!i10b 1
 R81
+R82
+R83
 !i113 1
 R13
 R14
@@ -565,19 +565,19 @@ R2
 R3
 R4
 R5
-Z82 8C:/dev/MIPS-Project/src/primitives/sign_extend.vhd
-Z83 FC:/dev/MIPS-Project/src/primitives/sign_extend.vhd
+Z84 8C:/dev/MIPS-Project/src/primitives/sign_extend.vhd
+Z85 FC:/dev/MIPS-Project/src/primitives/sign_extend.vhd
 l0
 L5
 VY?Vdn8D=7?NKkOQ8:e:6o1
 !s100 OC`@PjG;Uf;<>o7P82I[A2
 R8
 32
-R31
+R9
 !i10b 1
 R10
-Z84 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/primitives/sign_extend.vhd|
-Z85 !s107 C:/dev/MIPS-Project/src/primitives/sign_extend.vhd|
+Z86 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/primitives/sign_extend.vhd|
+Z87 !s107 C:/dev/MIPS-Project/src/primitives/sign_extend.vhd|
 !i113 1
 R13
 R14
@@ -592,11 +592,11 @@ VB>:3nR3GaH^H?XDM4oSR=2
 !s100 YjLYkk=aH2]8[PSWYU5?j3
 R8
 32
-R31
+R9
 !i10b 1
 R10
-R84
-R85
+R86
+R87
 !i113 1
 R13
 R14
@@ -607,8 +607,8 @@ R2
 R3
 R4
 R5
-Z86 8C:/dev/MIPS-Project/src/top_level.vhd
-Z87 FC:/dev/MIPS-Project/src/top_level.vhd
+Z88 8C:/dev/MIPS-Project/src/top_level.vhd
+Z89 FC:/dev/MIPS-Project/src/top_level.vhd
 l0
 L6
 VS>]5jP?08ATJZAEQR?=iU1
@@ -618,8 +618,8 @@ R8
 R31
 !i10b 1
 R32
-Z88 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/top_level.vhd|
-Z89 !s107 C:/dev/MIPS-Project/src/top_level.vhd|
+Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/src/top_level.vhd|
+Z91 !s107 C:/dev/MIPS-Project/src/top_level.vhd|
 !i113 1
 R13
 R14
@@ -632,7 +632,7 @@ R1
 R2
 R3
 R4
-Z90 DEx4 work 9 top_level 0 22 S>]5jP?08ATJZAEQR?=iU1
+Z92 DEx4 work 9 top_level 0 22 S>]5jP?08ATJZAEQR?=iU1
 l60
 L29
 VG]=W`h_M7iMGl6EOb=aKQ0
@@ -642,8 +642,8 @@ R8
 R31
 !i10b 1
 R32
-R88
-R89
+R90
+R91
 !i113 1
 R13
 R14
@@ -653,8 +653,8 @@ R2
 R3
 R4
 R5
-Z91 8C:/dev/MIPS-Project/testbenches/top_level_tb.vhd
-Z92 FC:/dev/MIPS-Project/testbenches/top_level_tb.vhd
+Z93 8C:/dev/MIPS-Project/testbenches/top_level_tb.vhd
+Z94 FC:/dev/MIPS-Project/testbenches/top_level_tb.vhd
 l0
 L5
 VRM3FUnL=3YioQ^X6YdD;j3
@@ -664,29 +664,29 @@ R8
 R31
 !i10b 1
 R32
-Z93 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/testbenches/top_level_tb.vhd|
-Z94 !s107 C:/dev/MIPS-Project/testbenches/top_level_tb.vhd|
+Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/dev/MIPS-Project/testbenches/top_level_tb.vhd|
+Z96 !s107 C:/dev/MIPS-Project/testbenches/top_level_tb.vhd|
 !i113 1
 R13
 R14
 Atb
 R1
-R90
+R92
 R2
 R3
 R4
-Z95 DEx4 work 12 top_level_tb 0 22 RM3FUnL=3YioQ^X6YdD;j3
+Z97 DEx4 work 12 top_level_tb 0 22 RM3FUnL=3YioQ^X6YdD;j3
 l30
 L8
-Z96 Vd8^]4MzazmEAU<6=`l`f:3
-Z97 !s100 LkAIh:C`Qh4Al4ObQ2D;z0
+Z98 Vd8^]4MzazmEAU<6=`l`f:3
+Z99 !s100 LkAIh:C`Qh4Al4ObQ2D;z0
 R8
 32
 R31
 !i10b 1
 R32
-R93
-R94
+R95
+R96
 !i113 1
 R13
 R14

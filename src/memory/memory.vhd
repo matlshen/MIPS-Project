@@ -44,6 +44,7 @@ begin -- ARCH
             if (address = x"0000FFFC") then -- write to the output port ($0000FFFC) and not the RAM
                 OutPort_en <= '1';
             else -- write to the RAM and output port
+                OutPort_en <= '1';
                 ram_wren <= '1';
             end if; 
         end if;
@@ -108,7 +109,7 @@ begin -- ARCH
         port map (
             clk    => clk,
             rst    => rst,
-            en     => MemWrite,
+            en     => OutPort_en,
             input  => RegB,
             output => OutPort);
 
