@@ -325,3 +325,6 @@ run -all
 #    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
 # ** Note: DONE!!!!!!
 #    Time: 2210 ns  Iteration: 0  Instance: /top_level_tb
+add wave -position end sim:/top_level_tb/UUT/U_DATAPATH/U_MEMORY_DATA_REGISTER/*
+add wave -position end sim:/top_level_tb/UUT/U_DATAPATH/U_MEMORY/*
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/dev/MIPS-Project/ModelSim/Memory_Test/wave.do
