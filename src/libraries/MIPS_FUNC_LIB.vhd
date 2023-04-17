@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 package MIPS_FUNC_LIB is
     --IR[5:0]
@@ -15,6 +16,8 @@ package MIPS_FUNC_LIB is
     constant FUNC_XOR   : unsigned(7 downto 0) := x"26";
     constant FUNC_SLT   : unsigned(7 downto 0) := x"2A";
     constant FUNC_SLTU  : unsigned(7 downto 0) := x"2B";
+    constant FUNC_MFLO  : unsigned(7 downto 0) := x"12";
+    constant FUNC_MFHI  : unsigned(7 downto 0) := x"10";
     --IR[31:26]
     constant OP_ADDIU   : unsigned(7 downto 0) := x"09";
     constant OP_SUBIU   : unsigned(7 downto 0) := x"10";

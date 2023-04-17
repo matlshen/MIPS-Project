@@ -23,13 +23,13 @@ entity datapath is
         JumpAndLink     : in std_logic;
         IsSigned        : in std_logic;
         PCSource        : in std_logic_vector(1 downto 0);
-        ALUOp           : in ALU_OP_t;
         ALUSrcB         : in std_logic_vector(1 downto 0);
-        ALUSrcA         : in std_logic;
+        ALUSrcA         : in std_logic_vector(1 downto 0);
         RegWrite        : in std_logic;
         RegDst          : in std_logic;
         IR31downto26    : out std_logic_vector(5 downto 0);
         -- ALU Control
+        OPSelect        : in ALU_OP_t;
         HI_en           : in std_logic;
         LO_en           : in std_logic;
         ALU_LO_HI       : in std_logic_vector(1 downto 0);
@@ -37,6 +37,7 @@ entity datapath is
     end datapath;
 
 architecture str of datapath is
+    signal PCSrcIn2     : std_logic_vector(31 downto 0);    -- In2 of PC Src select MUX
     signal PCInput      : std_logic_vector(31 downto 0);    -- Selection between ALUResult, ALUOutReg, IR&PC
     signal PC           : std_logic_vector(31 downto 0);    -- Output from program counter register
     signal PC_en        : std_logic;                        -- Combinational logic from controller
@@ -53,9 +54,11 @@ architecture str of datapath is
     signal RegA         : std_logic_vector(31 downto 0);    -- Output from Reg A
     signal RegB         : std_logic_vector(31 downto 0);    -- Output from Reg B
     signal IR15_0Extend : std_logic_vector(31 downto 0);    -- Sign extend output for IR[15:0]
+    signal IR25_21Extend: std_logic_vector(31 downto 0);    -- Zero extend IR[25:21]
 
     signal ALUInput0    : std_logic_vector(31 downto 0);    -- Selection between PC and Reg A
     signal ALUInput1    : std_logic_vector(31 downto 0);    -- Selection between Reg B, 4, IR[15:0], shift left
+    signal ALUSrcBIn3   : std_logic_vector(31 downto 0);    -- In3 of ALU Src B MUX
     signal ALUResult    : std_logic_vector(31 downto 0);    -- ALU result output
     signal ALUResultHi  : std_logic_vector(31 downto 0);    -- Hi bytes of ALU result output
     signal BranchTaken  : std_logic;                        -- ALU branch output
@@ -266,13 +269,17 @@ begin --str
             input       => IR(15 downto 0),
             output      => IR15_0Extend);
 
-    U_ALU_SRC_A_MUX : MUX_2x1
+    U_ALU_SRC_A_MUX : MUX_4x1
         generic map (WIDTH => 32)
         port map (
             in0     => PC,
             in1     => RegA,
+            in2     => IR25_21Extend,
+            in3     => std_logic_vector(to_unsigned(0, 32)),    -- Invalid selection
             sel     => ALUSrcA,
             output  => ALUInput0);
+
+    IR25_21Extend <= std_logic_vector(resize(unsigned(IR(25 downto 21)), 32));
             
     U_ALU_SRC_B_MUX : MUX_4x1
         generic map (WIDTH => 32)
@@ -280,9 +287,11 @@ begin --str
             in0     => RegB,
             in1     => std_logic_vector(to_unsigned(4, 32)),    -- '4'
             in2     => IR15_0Extend,
-            in3     => std_logic_vector(shift_left(unsigned(IR15_0Extend), 2)), -- (IR15_0Extend << 2)
+            in3     => ALUSrcBIn3,
             sel     => ALUSrcB,
             output  => ALUInput1);
+
+    ALUSrcBIn3 <= std_logic_vector(shift_left(unsigned(IR15_0Extend), 2)); -- (IR15_0Extend << 2)
 
     U_ALU : ALU
         generic map (WIDTH => 32)
@@ -290,7 +299,7 @@ begin --str
             input2      => ALUInput1,
             input1      => ALUInput0,
             shift       => IR(10 downto 6),
-            op          => ALUOPSel,
+            op          => OPSelect,
             result      => ALUResult,
             result_hi   => ALUResultHi,
             branch      => BranchTaken);
@@ -309,7 +318,7 @@ begin --str
         port map (
             clk     => clk,
             rst     => rst,
-            en      => '1',
+            en      => LO_en,
             input   => ALUResult,
             output  => LOReg);
 
@@ -318,7 +327,7 @@ begin --str
         port map (
             clk     => clk,
             rst     => rst,
-            en      => '1',
+            en      => HI_en,
             input   => ALUResultHi,
             output  => HIReg);
 
@@ -327,10 +336,12 @@ begin --str
         port map (
             in0     => ALUResult,
             in1     => ALUOutReg,
-            in2     => PC(31 downto 28) & IR(25 downto 0) & "00",
+            in2     => PCSrcIn2,
             in3     => std_logic_vector(to_unsigned(0, 32)),    -- Invalid selection
             sel     => PCSource,
             output  => PCInput);
+
+    PCSrcIn2 <= PC(31 downto 28) & IR(25 downto 0) & "00";
 
     U_ALU_OUT_MUX : MUX_4x1
         generic map (WIDTH => 32)

@@ -1,0 +1,137 @@
+C:/Dev/MIPS-Project/src/controller.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/controller.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package ALU_OP_LIB
+-- Loading package MIPS_FUNC_LIB
+-- Compiling entity controller
+-- Compiling architecture BHV of controller
+
+} {} {}} C:/Dev/MIPS-Project/src/libraries/MIPS_FUNC_LIB.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/libraries/MIPS_FUNC_LIB.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package MIPS_FUNC_LIB
+
+} {} {}} C:/Dev/MIPS-Project/src/primitives/decoder7seg.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/primitives/decoder7seg.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity decoder7seg
+-- Compiling architecture BHV of decoder7seg
+
+} {} {}} C:/Dev/MIPS-Project/src/registers_file.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/registers_file.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity registers_file
+-- Compiling architecture async_read of registers_file
+
+} {} {}} C:/Dev/MIPS-Project/src/primitives/mux_2x1.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/primitives/mux_2x1.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity mux_2x1
+-- Compiling architecture bhv of mux_2x1
+
+} {} {}} C:/Dev/MIPS-Project/src/memory/ram.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/memory/ram.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package altera_mf_components
+-- Compiling entity ram
+-- Compiling architecture SYN of ram
+
+} {} {}} C:/Dev/MIPS-Project/src/primitives/reg.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/primitives/reg.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity reg
+-- Compiling architecture bhv of reg
+
+} {} {}} C:/Dev/MIPS-Project/src/primitives/mux_4x1.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/primitives/mux_4x1.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity mux_4x1
+-- Compiling architecture bhv of mux_4x1
+
+} {} {}} C:/Dev/MIPS-Project/src/alu.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/alu.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package ALU_OP_LIB
+-- Compiling entity alu
+-- Compiling architecture bhv of alu
+
+} {} {}} C:/Dev/MIPS-Project/src/primitives/sign_extend.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/primitives/sign_extend.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity sign_extend
+-- Compiling architecture BHV of sign_extend
+
+} {} {}} C:/Dev/MIPS-Project/testbenches/top_level_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/testbenches/top_level_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity top_level_tb
+-- Compiling architecture TB of top_level_tb
+-- Loading package ALU_OP_LIB
+-- Loading entity top_level
+
+} {} {}} C:/Dev/MIPS-Project/src/memory/memory.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/memory/memory.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity memory
+-- Compiling architecture ARCH of memory
+-- Loading entity mux_4x1
+-- Loading entity reg
+-- Loading package altera_mf_components
+-- Loading entity ram
+
+} {} {}} C:/Dev/MIPS-Project/src/top_level.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/top_level.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package ALU_OP_LIB
+-- Compiling entity top_level
+-- Compiling architecture STR of top_level
+-- Loading entity datapath
+-- Loading package MIPS_FUNC_LIB
+-- Loading entity controller
+-- Loading entity decoder7seg
+
+} {} {}} C:/Dev/MIPS-Project/src/libraries/ALU_OP_LIB.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Dev/MIPS-Project/src/libraries/ALU_OP_LIB.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package ALU_OP_LIB
+
+} {} {}}
