@@ -7,9 +7,9 @@ entity memory is
         clk         : in std_logic;
         rst         : in std_logic;
         -- From datapath
-        address     : in  std_logic_vector(31 downto 0);    -- Memory address
-        data        : out std_logic_vector(31 downto 0);    -- Read data from memory
-        RegB        : in  std_logic_vector(31 downto 0);    -- Write data
+        addr        : in  std_logic_vector(31 downto 0);    -- Memory addr
+        RdData      : out std_logic_vector(31 downto 0);    -- Read RdDatafrom memory
+        WrData      : in  std_logic_vector(31 downto 0);    -- Write data
         -- From Controller
         MemRead     : in std_logic;
         MemWrite    : in std_logic;
@@ -35,13 +35,13 @@ architecture ARCH of memory is
 begin -- ARCH
 
     -- Write Process
-    process(address, MemWrite)
+    process(addr, MemWrite)
     begin 
         OutPort_en <= '0';
         ram_wren <= '0';
         
         if (MemWrite = '1') then
-            if (address = x"0000FFFC") then -- write to the output port ($0000FFFC) and not the RAM
+            if (addr = x"0000FFFC") then -- write to the output port ($0000FFFC) and not the RAM
                 OutPort_en <= '1';
             else -- write to the RAM and output port
                 OutPort_en <= '1';
@@ -52,14 +52,14 @@ begin -- ARCH
     end process;
 
     -- Read Process
-    process (MemRead, address)
+    process (MemRead, addr)
     begin -- process
         if (MemRead = '1') then
-            if (address = x"0000FFF8") then
+            if (addr = x"0000FFF8") then
                 OutMuxSel <= "00"; -- INPORT0
-            elsif (address = x"0000FFFC") then
+            elsif (addr = x"0000FFFC") then
                 OutMuxSel <= "01";  -- INPORT1
-            else -- Any other address is in RAM
+            else -- Any other addr is in RAM
                 OutMuxSel <= "10"; -- RAM
             end if;
         else
@@ -76,7 +76,7 @@ begin -- ARCH
             in2    => RamOut,
             in3    => (others => '0'),
             sel    => OutMuxSel,
-            output => data);
+            output => RdData);
 
     U_IN_PORT_0_REG: entity work.reg
         generic map (   WIDTH => 32 )
@@ -98,9 +98,9 @@ begin -- ARCH
 
     U_RAM: entity work.ram
         port map (
-            address	=> address(9 downto 2),
+            address	=> addr(9 downto 2),
             clock   => clk,
-            data	=> RegB,
+            data	=> WrData,
             wren	=> ram_wren,
             q		=> RamOut);
 
@@ -110,7 +110,7 @@ begin -- ARCH
             clk    => clk,
             rst    => rst,
             en     => OutPort_en,
-            input  => RegB,
+            input  => WrData,
             output => OutPort);
 
 end ARCH;

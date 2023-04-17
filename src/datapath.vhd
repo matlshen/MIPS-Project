@@ -115,9 +115,9 @@ architecture str of datapath is
             clk       : in std_logic;
             rst       : in std_logic;
             -- From datapath
-            address   : in  std_logic_vector(31 downto 0);
-            data      : out std_logic_vector(31 downto 0);
-            RegB      : in  std_logic_vector(31 downto 0);
+            addr      : in  std_logic_vector(31 downto 0);
+            RdData    : out std_logic_vector(31 downto 0);
+            WrData    : in  std_logic_vector(31 downto 0);
             -- From Controller
             MemRead   : in std_logic;
             MemWrite  : in std_logic;
@@ -183,9 +183,9 @@ begin --str
         port map (
             clk         => clk,
             rst         => rst,
-            address     => MemAddrSel,
-            data        => MemData,
-            RegB        => RegB,
+            addr        => MemAddrSel,
+            RdData      => MemData,
+            WrData      => RegB,
             MemRead     => MemRead,
             MemWrite    => MemWrite,
             InPort1_en  => InPort1_en,
