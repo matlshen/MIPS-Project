@@ -35,7 +35,7 @@ end controller;
 architecture BHV of controller is
 
     type STATE_TYPE is (INSTRUCTION_FETCH_S, LOAD_IR_S, INSTRUCTION_DECODE_S, MEM_ADDR_COMP_S, 
-                        MEM_ACCESS_READ_S, MEM_ACCESS_WRITE_S, LOAD_MEM_DATA_S, MEM_READ_COMPLETION_S, 
+                        MEM_ACCESS_READ_S, MEM_ACCESS_WRITE_S, MEM_WRITE_WAIT_S, LOAD_MEM_DATA_S, MEM_READ_COMPLETION_S, 
                         R_TYPE_EXECUTION_S, I_TYPE_EXECUTION_S, R_TYPE_COMPLETION_S, I_TYPE_COMPLETION_S, 
                         BRANCH_COMPLETION_S, JUMP_COMPLETION_S, HALT_S);
     signal state, next_state    : STATE_TYPE;
@@ -253,7 +253,14 @@ begin --BHV
             when MEM_ACCESS_WRITE_S =>
                 IorD <= '1';        -- Select ALUOut register to write to memory
                 MemWrite <= '1';    -- Enable writing to memory
-                next_state <= INSTRUCTION_FETCH_S;
+                next_state <= MEM_WRITE_WAIT_S;
+
+            when MEM_WRITE_WAIT_S =>
+                -- Read instruction from memroy, necessary since memory read delayed by one cycle after write
+                IorD        <= '0';         -- Select current PC as memory read address
+                MemRead     <= '1';         -- Enable memory read
+                IRWrite     <= '1';         -- Write memory output to IR
+                next_state  <= INSTRUCTION_FETCH_S;
 
             when HALT_S =>
                 -- Endless loop
