@@ -59,16 +59,18 @@ begin --TB
 
         done <= '0';
 
-        buttons(1) <= '0'; -- begin resetting
-        for i in 0 to 9 loop
-            wait until rising_edge(clk); -- wait for 10 cycles
-        end loop;
-        buttons(1) <= '1'; -- stop resetting
+        
+        buttons(1) <= '0'; -- reset
+        wait until rising_edge(clk); -- wait for reset
+        buttons(1) <= '1'; -- not reset
 
-        -- the program should execute now
+        switches <= "0000001100"; -- Load InPort0 with 12
+        wait until rising_edge(clk);
+        switches <= "1000000110"; -- Load InPort1 with 6
+        wait until rising_edge(clk);
 
-        for i in 0 to 100 loop
-            wait until rising_edge(clk); -- wait for 10 cycles
+        for i in 0 to 5000 loop  -- Run for 100 cycles
+            wait until rising_edge(clk);
         end loop;
         done <= '1';
         report "DONE!!!!!!" severity note;

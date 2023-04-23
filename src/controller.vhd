@@ -10,12 +10,13 @@ entity controller is
         rst             : in std_logic;
         -- Controller
         IR31downto26    : in std_logic_vector(5 downto 0);      -- IR[31:26], OpCode
+        IR20downto16    : in std_logic_vector(4 downto 0);      -- IR[20:16], Branch identifier
         PCWriteCond     : out std_logic;
         PCWrite         : out std_logic;
         IorD            : out std_logic;
         MemRead         : out std_logic;
         MemWrite        : out std_logic;
-        MemToReg        : out std_logic;
+        MemToReg        : out std_logic_vector(1 downto 0);
         IRWrite         : out std_logic;
         JumpAndLink     : out std_logic;
         IsSigned        : out std_logic;
@@ -34,13 +35,14 @@ end controller;
 
 architecture BHV of controller is
 
-    type STATE_TYPE is (INSTRUCTION_FETCH_S, LOAD_IR_S, INSTRUCTION_DECODE_S, MEM_ADDR_COMP_S, 
-                        MEM_ACCESS_READ_S, MEM_ACCESS_WRITE_S, MEM_WRITE_WAIT_S, LOAD_MEM_DATA_S, MEM_READ_COMPLETION_S, 
+    type STATE_TYPE is (INSTRUCTION_FETCH_S, MEM_READ_DELAY_S, LOAD_IR_S, INSTRUCTION_DECODE_S, MEM_ADDR_COMP_S, 
+                        MEM_ACCESS_READ_S, MEM_ACCESS_WRITE_S, MEM_WRITE_WAIT_S, LOAD_MEM_DATA_S, MEM_READ_COMPLETE_S, 
                         R_TYPE_EXECUTION_S, I_TYPE_EXECUTION_S, R_TYPE_COMPLETION_S, I_TYPE_COMPLETION_S, 
-                        BRANCH_COMPLETION_S, JUMP_COMPLETION_S, HALT_S);
+                        BRANCH_COMPLETION_S, JUMP_COMPLETION_S, WRITE_RETURN_ADDR_S, JUMP_REGISTER_S, HALT_S);
     signal state, next_state    : STATE_TYPE;
     signal OpCode               : unsigned(7 downto 0);
     signal Func                 : unsigned(7 downto 0);
+    signal BranchCode           : unsigned(7 downto 0);
 
 begin --BHV
 
@@ -62,7 +64,7 @@ begin --BHV
         IorD        <= '0';
         MemRead     <= '0';
         MemWrite    <= '0';
-        MemToReg    <= '0';
+        MemToReg    <= "00";
         IRWrite     <= '0';
         JumpAndLink <= '0';
         IsSigned    <= '0';
@@ -85,23 +87,32 @@ begin --BHV
                 -- Read instruction from memroy
                 IorD        <= '0';         -- Select current PC as memory read address
                 MemRead     <= '1';         -- Enable memory read
-                IRWrite     <= '1';         -- Write memory output to IR
                 -- Load PC with PC+4
-                ALUSrcA     <= "00";         -- Select current PC
+                ALUSrcA     <= "00";        -- Select current PC
                 ALUSrcB     <= "01";        -- Select '4'
                 OpSelect    <= ALU_ADDU;    -- Add unsigned
                 PCSource    <= "00";        -- ALU result
                 PCWrite     <= '1';         -- Enable PC reg write
                 -- Next step is to load IR from output of memory
-                next_state <= LOAD_IR_S;
+                next_state <= MEM_READ_DELAY_S;
 
-            -- Wait one cycle for memory output to appear in IR
+            -- Wait one cycle for memory data to appear
+            when MEM_READ_DELAY_S =>
+                IRWrite     <= '1';
+                next_state  <= LOAD_IR_S;
+
+            -- Load memory data into instruction register
             when LOAD_IR_S =>
                 IRWrite     <= '0';
                 next_state  <= INSTRUCTION_DECODE_S;
 
             -- Determine instruction type
             when INSTRUCTION_DECODE_S =>
+                -- Prepare ALU result for jump, set to PC+[jump offset]
+                ALUSrcA     <= "00";        -- Select current PC
+                ALUSrcB     <= "11";        -- Select sign extended IR[15:0]
+                OpSelect    <= ALU_ADDU;
+
                 -- R-type instruction
                 if (OpCode = x"00") then
                     next_state <= R_TYPE_EXECUTION_S;
@@ -112,11 +123,21 @@ begin --BHV
                 -- LW/SW instructions
                 elsif (OpCode = x"23" or OpCode = x"2B") then
                     next_state <= MEM_ADDR_COMP_S;
+                -- Jump
+                elsif (OpCode = x"02") then
+                    next_state <= JUMP_COMPLETION_S;
+                -- Jump and link
+                elsif (OpCode = x"03") then
+                    next_state <= WRITE_RETURN_ADDR_S;
+                -- Branch instructions
+                elsif (OpCode = x"04" or OpCode = x"05" or OpCode = x"06"
+                        or OpCode = x"07" or OpCode = x"01") then
+                    next_state <= BRANCH_COMPLETION_S;
                 elsif (OpCode = x"3F") then
                     next_state <= HALT_S;
                 -- Unreachable
                 else
-                    null;
+                    next_state <= HALT_S;
                 end if;
 
             when R_TYPE_EXECUTION_S =>
@@ -158,16 +179,18 @@ begin --BHV
                         OPSelect <= ALU_SLTU;
                     when FUNC_MFHI =>   -- move from HI register
                         ALU_LO_HI <= "10";
-                        MemToReg <= '0';
+                        MemToReg <= "00";
                         RegDst <= '1';
                         RegWrite <= '1';
                         next_state <= INSTRUCTION_FETCH_S;
                     when FUNC_MFLO =>   -- move from LO register
                         ALU_LO_HI <= "01";
-                        MemToReg <= '0';
+                        MemToReg <= "00";
                         RegDst <= '1';
                         RegWrite <= '1';
                         next_state <= INSTRUCTION_FETCH_S;
+                    when FUNC_JR =>     -- jump register
+                        next_state <= JUMP_REGISTER_S;
                     when others =>      -- Hopefully unreachable
                         null;
                 end case; --Func
@@ -210,7 +233,7 @@ begin --BHV
                 ALU_LO_HI   <= "00";                -- Select ALU Out register as ALU MUX output
                 RegDst      <= '1';                 -- Select IR[15:11], 'rd' as write destination
                 RegWrite    <= '1';                 -- Enable register write
-                MemToReg    <= '0';                 -- Select ALU MUX output for register write data
+                MemToReg    <= "00";                -- Select ALU MUX output for register write data
                 next_state  <= INSTRUCTION_FETCH_S; -- Go back to initial state
 
             when I_TYPE_COMPLETION_S =>
@@ -218,12 +241,12 @@ begin --BHV
                 ALU_LO_HI   <= "00";                -- Select ALU Out register as ALU MUX output
                 RegDst      <= '0';                 -- Select IR[15:11], 'rt' as write destination
                 RegWrite    <= '1';                 -- Enable register write
-                MemToReg    <= '0';                 -- Select ALU MUX output for register write data
+                MemToReg    <= "00";                -- Select ALU MUX output for register write data
                 next_state  <= INSTRUCTION_FETCH_S; -- Go back to initial state
 
             when MEM_ADDR_COMP_S =>
-                ALUSrcA <= "10";     -- Select IR[25:21]
-                ALUSrcB <= "10";    -- Select IR[15:0], 0 extended to 32 bits
+                ALUSrcA <= "01";     -- Select IR[25:21]
+                ALUSrcB <= "10";      -- Select IR[15:0], 0 extended to 32 bits
                 IsSigned <= '0';
                 OPSelect <= ALU_ADDU;
 
@@ -235,18 +258,18 @@ begin --BHV
 
             when MEM_ACCESS_READ_S =>
                 IorD <= '1';    -- Select ALUOut register for memory address
-                MemRead <= '1'; -- Enable memory read
+                MemRead <= '1'; -- Enable memory 
                 next_state <= LOAD_MEM_DATA_S;
 
             when LOAD_MEM_DATA_S =>
                 -- Wait one cycle for memory to load in memory data register
                 IorD <= '1';
                 MemRead <= '1';
-                next_state <= MEM_READ_COMPLETION_S;
+                next_state <= MEM_READ_COMPLETE_S;
 
-            when MEM_READ_COMPLETION_S =>
+            when MEM_READ_COMPLETE_S =>
                 RegDst <= '0';      -- Select IR[20:16] as write address
-                MemToReg <= '1';    -- Select memory data register as write data
+                MemToReg <= "01";    -- Select memory data register as write data
                 RegWrite <= '1';    -- Enable writing to registers
                 next_state <= INSTRUCTION_FETCH_S;
 
@@ -262,6 +285,55 @@ begin --BHV
                 IRWrite     <= '1';         -- Write memory output to IR
                 next_state  <= INSTRUCTION_FETCH_S;
 
+            when JUMP_COMPLETION_S =>
+                PCWrite     <= '1';         -- Write jump address to PC
+                PCSource    <= "10";        -- Select ALU Out register
+                next_state  <= INSTRUCTION_FETCH_S;
+
+            when WRITE_RETURN_ADDR_S =>
+                JumpAndLink <= '1';         -- Enable write to r31
+                MemToReg    <= "10";        -- Select PC as register write data
+                RegWrite    <= '1';         -- Enable writing to registers file
+                next_state  <= JUMP_COMPLETION_S;
+
+            when JUMP_REGISTER_S =>
+                PCSource    <= "11";        -- Select RegA to write to PC
+                PCWrite     <= '1';
+                next_state  <= INSTRUCTION_FETCH_S;
+
+            when BRANCH_COMPLETION_S =>
+                PCWriteCond <= '1';         -- PC write en will depend on branch
+                ALUSrcA     <= "01";        -- Select register A
+                ALUSrcB     <= "00";        -- Select register B
+                PCSource    <= "01";        -- Select ALU Out register
+
+                -- Decode OpCode further to determine branch type
+                case OpCode is
+                    when OP_BEQ =>
+                        OPSelect <= ALU_BEQ;
+                    when OP_BNE =>
+                        OPSelect <= ALU_BNE;
+                    when OP_BLTE =>
+                        OPSelect <= ALU_BLTE;
+                    when OP_BGTZ =>
+                        OPSelect <= ALU_BGTZ;
+                    -- Branch if less than 0 or branch if greater than or equal to zero
+                    when OP_BLORGEZ =>
+                        case BranchCode is
+                            when x"00" =>
+                                OpSelect <= ALU_BGEZ;
+                            when x"01" =>
+                                OpSelect <= ALU_BLTZ;
+                            when others =>
+                                null;
+                        end case; -- BranchCode
+                    when others =>
+                        null;
+                end case; -- OpCode
+
+                next_state  <= INSTRUCTION_FETCH_S;
+
+            -- Used in week 2 tests only
             when HALT_S =>
                 -- Endless loop
                 next_state <= state;
@@ -272,7 +344,8 @@ begin --BHV
         end case; --state
     end process;
 
-    OpCode <= resize(unsigned(IR31downto26), 8);    -- Resizing allows comparison with 8-bit hex
-    Func   <= resize(unsigned(IR5downto0), 8);      -- Resizing allows comparison with 8-bit hex
+    OpCode      <= resize(unsigned(IR31downto26), 8);    -- Resizing allows comparison with 8-bit hex
+    Func        <= resize(unsigned(IR5downto0), 8);      -- Resizing allows comparison with 8-bit hex
+    BranchCode  <= resize(unsigned(IR20downto16), 8);      -- Resizing allows comparison with 8-bit hex
 
 end BHV;

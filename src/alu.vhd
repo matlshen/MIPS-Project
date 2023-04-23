@@ -54,13 +54,13 @@ begin --bhv
         result <= input1 xor input2;
 
       when ALU_SRL =>   -- shift right logical
-        result <= std_logic_vector(shift_right(unsigned(input1), to_integer(unsigned(shift))));
+        result <= std_logic_vector(shift_right(unsigned(input2), to_integer(unsigned(shift))));
 
       when ALU_SLL =>   -- shift left logical
-        result <= std_logic_vector(shift_left(unsigned(input1), to_integer(unsigned(shift))));
+        result <= std_logic_vector(shift_left(unsigned(input2), to_integer(unsigned(shift))));
 
       when ALU_SRA =>   -- shift right arithmetic
-        result <= std_logic_vector(shift_right(signed(input1), to_integer(unsigned(shift))));
+        result <= std_logic_vector(shift_right(signed(input2), to_integer(unsigned(shift))));
 
       when ALU_SLT =>   -- set on less than signed
         if (signed(input1) < signed(input2)) then

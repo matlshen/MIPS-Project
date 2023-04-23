@@ -63,7 +63,8 @@ BEGIN
 	GENERIC MAP (
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
-		init_file => "../../test_cases/week2_demo.mif",
+		--init_file => "../../test_cases/week2_demo.mif",
+		init_file => "../../test_cases/bubble_sort.mif",
 		intended_device_family => "Cyclone V",
 		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
 		lpm_type => "altsyncram",

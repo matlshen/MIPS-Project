@@ -18,6 +18,7 @@ package MIPS_FUNC_LIB is
     constant FUNC_SLTU  : unsigned(7 downto 0) := x"2B";
     constant FUNC_MFLO  : unsigned(7 downto 0) := x"12";
     constant FUNC_MFHI  : unsigned(7 downto 0) := x"10";
+    constant FUNC_JR    : unsigned(7 downto 0) := x"08";
     --IR[31:26]
     constant OP_ADDIU   : unsigned(7 downto 0) := x"09";
     constant OP_SUBIU   : unsigned(7 downto 0) := x"10";
@@ -28,4 +29,9 @@ package MIPS_FUNC_LIB is
     constant OP_XORI    : unsigned(7 downto 0) := x"0E";
     constant OP_LW      : unsigned(7 downto 0) := x"23";
     constant OP_SW      : unsigned(7 downto 0) := x"2B";
+    constant OP_BEQ     : unsigned(7 downto 0) := x"04";
+    constant OP_BNE     : unsigned(7 downto 0) := x"05";
+    constant OP_BLTE    : unsigned(7 downto 0) := x"06";
+    constant OP_BGTZ    : unsigned(7 downto 0) := x"07";
+    constant OP_BLORGEZ : unsigned(7 downto 0) := x"01";
 end MIPS_FUNC_LIB;

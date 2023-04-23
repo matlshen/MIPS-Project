@@ -35,44 +35,44 @@ architecture STR of top_level is
     signal InPort1_en  : std_logic;
     signal InPort0_en  : std_logic;
     -- Controller
-    signal PCWriteCond : std_logic; -- enables the PC register if the “Branch” signal is asserted. Input to the datapath, output from the controller.
-    signal PCWrite     : std_logic; -- enables the PC register. Input to the datapath, output from the controller.
-    signal IorD        : std_logic; -- select between the PC or the ALU output as the memory address. Input to the datapath, output from the controller.
-    signal MemRead     : std_logic; -- enables memory read. Input to the datapath, output from the controller.
-    signal MemWrite    : std_logic; -- enables memory write. Input to the datapath, output from the controller.
-    signal MemToReg    : std_logic; -- select between “Memory data register” or “ALU output” as input to “write data” signal. Input to the datapath, output from the controller.
-    signal IRWrite     : std_logic; -- enables the instruction register. Input to the datapath, output from the controller.
-    signal JumpAndLink : std_logic; -- when asserted, $s31 will be selected as the write register. Input to the datapath, output from the controller.
-    signal IsSigned    : std_logic; -- when asserted, “Sign Extended” will output a 32-bit sign extended representation of 16-bit input. Input to the datapath, output from the controller.
-    signal PCSource    : std_logic_vector(1 downto 0); -- select between the “ALU output”, “ALU OUT Reg”, or a “shifted to left PC” as an input to PC. Input to the datapath, output from the controller.
-    signal ALUSrcA     : std_logic_vector(1 downto 0); -- select between RegA or Pc as the Input1 of the ALU. Input to the datapath, output from the controller.
-    signal ALUSrcB     : std_logic_vector(1 downto 0); -- select between RegB, “4”, IR15-0, or “shifted IR15-0” as the Input2 of the ALU. Input to the datapath, output from the controller.
-    signal RegWrite    : std_logic; -- enables the register file. Input to the datapath, output from the controller.
-    signal RegDst      : std_logic; -- select between IR20-16 or IR15-11 as the input to the “Write Reg”. Input to the datapath, output from the controller.
-    signal IR31downto26: std_logic_vector(5 downto 0); -- IR31-26 (the OPCode): Will be decoded by the controller to determine what instruction to execute. Input to the CONTROLLER, output from the datapath.
-    signal IR5downto0: std_logic_vector(5 downto 0);
+    signal PCWriteCond : std_logic;
+    signal PCWrite     : std_logic;
+    signal IorD        : std_logic;
+    signal MemRead     : std_logic;
+    signal MemWrite    : std_logic;
+    signal MemToReg    : std_logic_vector(1 downto 0);
+    signal IRWrite     : std_logic;
+    signal JumpAndLink : std_logic;
+    signal IsSigned    : std_logic;
+    signal PCSource    : std_logic_vector(1 downto 0);
+    signal ALUSrcA     : std_logic_vector(1 downto 0);
+    signal ALUSrcB     : std_logic_vector(1 downto 0);
+    signal RegWrite    : std_logic;
+    signal RegDst      : std_logic;
+    signal IR31downto26: std_logic_vector(5 downto 0);
+    signal IR20downto16 : std_logic_vector(4 downto 0);
     -- ALU Controller
     signal OpSelect     : ALU_OP_t;
-    signal IR20downto16 : std_logic_vector(4 downto 0);
     signal HI_en        : std_logic;
     signal LO_en        : std_logic;
     signal ALU_LO_HI    : std_logic_vector(1 downto 0);
+    signal IR5downto0: std_logic_vector(5 downto 0);
 begin --STR
 
     rst <= not buttons(1);
 
-    InPort1_en <= switches(9) and (not buttons(0));
-    InPort0_en <= (not switches(9)) and (not buttons(0));
+    InPort1_en <= switches(9);
+    InPort0_en <= (not switches(9));
     InPort <= std_logic_vector(to_unsigned(0,23) & unsigned(switches(8 downto 0)));
 
     U_DATAPATH: entity work.datapath
         port map (
-            clk         => clk50MHz, -- 50 MHz internal clock
-            rst         => rst, -- rst for the entire circuit, does NOT reset the input ports
+            clk         => clk50MHz,
+            rst         => rst,
             InPort1_en  => InPort1_en,
             InPort0_en  => InPort0_en,
-            InPortSwitches => switches,
-            OutPort      => OutPort, -- output to the 7 segment LEDS
+            InPort      => InPort,
+            OutPort      => OutPort,
             PCWriteCond  => PCWriteCond,
             PCWrite      => PCWrite,
             IorD         => IorD,
@@ -90,6 +90,7 @@ begin --STR
             RegDst       => RegDst,
             IR31downto26 => IR31downto26,
             IR5downto0   => IR5downto0,
+            IR20downto16 => IR20downto16,
             HI_en        => HI_en,
             LO_en        => LO_en,
             ALU_LO_HI    => ALU_LO_HI
@@ -97,8 +98,8 @@ begin --STR
 
     U_CONTROLLER: entity work.controller
         port map (
-            clk          => clk50MHz, -- 50 MHz internal clock
-            rst          => rst, -- rst for the entire circuit, does NOT reset the input ports
+            clk          => clk50MHz,
+            rst          => rst,
             PCWriteCond  => PCWriteCond,
             PCWrite      => PCWrite,
             IorD         => IorD,
@@ -116,6 +117,7 @@ begin --STR
             RegDst       => RegDst,
             IR31downto26 => IR31downto26,
             IR5downto0   => IR5downto0,
+            IR20downto16 => IR20downto16,
             HI_en        => HI_en,
             LO_en        => LO_en,
             ALU_LO_HI    => ALU_LO_HI

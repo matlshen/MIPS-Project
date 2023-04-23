@@ -10,7 +10,7 @@ entity datapath is
         rst             : in std_logic;
         InPort0_en      : in std_logic;
         InPort1_en      : in std_logic;
-        InPortSwitches  : in std_logic_vector(9 downto 0);  -- Before zero extension
+        InPort          : in std_logic_vector(31 downto 0);
         OutPort         : out std_logic_vector(31 downto 0);
         -- Controller
         PCWriteCond     : in std_logic;
@@ -18,7 +18,7 @@ entity datapath is
         IorD            : in std_logic;
         MemRead         : in std_logic;
         MemWrite        : in std_logic;
-        MemToReg        : in std_logic;
+        MemToReg        : in std_logic_vector(1 downto 0);
         IRWrite         : in std_logic;
         JumpAndLink     : in std_logic;
         IsSigned        : in std_logic;
@@ -28,6 +28,7 @@ entity datapath is
         RegWrite        : in std_logic;
         RegDst          : in std_logic;
         IR31downto26    : out std_logic_vector(5 downto 0);
+        IR20downto16    : out std_logic_vector(4 downto 0);
         -- ALU Control
         OPSelect        : in ALU_OP_t;
         HI_en           : in std_logic;
@@ -43,7 +44,6 @@ architecture str of datapath is
     signal PC_en        : std_logic;                        -- Combinational logic from controller
     signal MemAddrSel   : std_logic_vector(31 downto 0);    -- Selection between PC and ALUOutSel
     signal MemData      : std_logic_vector(31 downto 0);    -- Output from main memory
-    signal InPort       : std_logic_vector(31 downto 0);    -- Zero extended switch input
     signal IR           : std_logic_vector(31 downto 0);    -- Output from instruction register
     signal MemDataReg   : std_logic_vector(31 downto 0);    -- Output from memory data register
 
@@ -193,8 +193,6 @@ begin --str
             InPort      => InPort,
             OutPort     => OutPort);
 
-    InPort <= std_logic_vector(to_unsigned(0, 22)) & InPortSwitches;
-
     U_INSTRUCTION_REGISTER : REG
         generic map (WIDTH => 32)
         port map (
@@ -221,11 +219,13 @@ begin --str
             sel     => RegDst,
             output  => WriteReg);
     
-    U_WRITE_DATA_MUX : MUX_2x1
+    U_WRITE_DATA_MUX : MUX_4x1
         generic map (WIDTH => 32)
         port map (
             in0     => ALUOutSel,
             in1     => MemDataReg,
+            in2     => PC,                  -- Modified from given
+            in3     => (others => '0'),     -- Invalid selection
             sel     => MemToReg,
             output  => WriteData);
 
@@ -354,6 +354,7 @@ begin --str
             output  => ALUOutSel);
     
     IR31downto26    <= IR(31 downto 26);
+    IR20downto16    <= IR(20 downto 16);
     IR5downto0      <= IR(5 downto 0);
     
 end str;

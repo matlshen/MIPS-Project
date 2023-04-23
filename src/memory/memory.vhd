@@ -32,6 +32,9 @@ architecture ARCH of memory is
 
     signal OutMuxSel    : std_logic_vector(1 downto 0);
 
+    -- OutMuxSel2 delayed by 1 cycle to account for difference in access time between inport and RAM
+    signal OutMuxSel2   : std_logic_vector(1 downto 0);    
+
 begin -- ARCH
 
     -- Write Process
@@ -55,56 +58,37 @@ begin -- ARCH
     process (MemRead, addr)
     begin -- process
         if (MemRead = '1') then
-            if (addr = x"0000FFF8") then
-                OutMuxSel <= "00"; -- INPORT0
-            elsif (addr = x"0000FFFC") then
-                OutMuxSel <= "01";  -- INPORT1
-            else -- Any other addr is in RAM
-                OutMuxSel <= "10"; -- RAM
+            if (addr = x"0000FFF8") then    -- INPORT0 address
+                OutMuxSel <= "00"; 
+            elsif (addr = x"0000FFFC") then -- INPORT1 address
+                OutMuxSel <= "01"; 
+            else -- RAM address
+                OutMuxSel <= "10";
             end if;
         else
             OutMuxSel <= "11";  -- Read 0s if MemRead is not enabled
         end if;
     end process;
 
-
-    U_OUT_MUX: entity work.mux_4x1
-        generic map (   WIDTH => 32 )
-        port map (
-            in0    => InPort0,
-            in1    => InPort1,
-            in2    => RamOut,
-            in3    => (others => '0'),
-            sel    => OutMuxSel,
-            output => RdData);
-
-    U_IN_PORT_0_REG: entity work.reg
+    U_IN_PORT_0_REG : entity work.reg
         generic map (   WIDTH => 32 )
         port map (
             clk    => clk,
-            rst    => '0',
+            rst    => rst,
             en     => InPort0_en,
             input  => InPort,
             output => InPort0);
 
-    U_IN_PORT_1_REG: entity work.reg
+    U_IN_PORT_1_REG : entity work.reg
         generic map (   WIDTH => 32 )
         port map (
             clk    => clk,
-            rst    => '0',
+            rst    => rst,
             en     => InPort1_en,
             input  => InPort,
             output => InPort1);
 
-    U_RAM: entity work.ram
-        port map (
-            address	=> addr(9 downto 2),
-            clock   => clk,
-            data	=> WrData,
-            wren	=> ram_wren,
-            q		=> RamOut);
-
-    U_OUT_PORT_REG: entity work.reg
+    U_OUT_PORT_REG : entity work.reg
         generic map (   WIDTH => 32 )
         port map (
             clk    => clk,
@@ -112,5 +96,32 @@ begin -- ARCH
             en     => OutPort_en,
             input  => WrData,
             output => OutPort);
+
+    U_SEL_REG : entity work.reg
+        generic map (   WIDTH => 2 )
+        port map (
+            clk    => clk,
+            rst    => rst,
+            en     => '1',
+            input  => OutMuxSel,
+            output => OutMuxSel2);
+
+    U_OUT_MUX : entity work.mux_4x1
+        generic map (   WIDTH => 32 )
+        port map (
+            in0    => InPort0,
+            in1    => InPort1,
+            in2    => RamOut,
+            in3    => (others => '0'),
+            sel    => OutMuxSel2,
+            output => RdData);
+
+    U_RAM : entity work.ram
+        port map (
+            address	=> addr(9 downto 2),
+            clock   => clk,
+            data	=> WrData,
+            wren	=> ram_wren,
+            q		=> RamOut);
 
 end ARCH;

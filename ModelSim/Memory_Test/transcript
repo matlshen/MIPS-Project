@@ -1,22 +1,6 @@
-# Compile of registers_file.vhd was successful.
-# Compile of alu.vhd was successful.
-# Compile of controller.vhd was successful.
-# Compile of datapath.vhd was successful.
-# Compile of MIPS_FUNC_LIB.vhd was successful.
-# Compile of ALU_OP_LIB.vhd was successful.
-# Compile of ram.vhd was successful.
-# Compile of memory.vhd was successful.
-# Compile of sign_extend.vhd was successful.
-# Compile of mux_2x1.vhd was successful.
-# Compile of mux_4x1.vhd was successful.
-# Compile of reg.vhd was successful.
-# Compile of top_level.vhd was successful.
-# Compile of decoder7seg.vhd was successful.
-# Compile of top_level_tb.vhd was successful.
-# 15 compiles, 0 failed with no errors.
 vsim -gui work.top_level_tb
 # vsim -gui work.top_level_tb 
-# Start time: 12:36:37 on Apr 17,2023
+# Start time: 09:49:17 on Apr 19,2023
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -30,13 +14,104 @@ vsim -gui work.top_level_tb
 # Loading work.mux_2x1(bhv)
 # Loading altera_mf.altera_mf_components
 # Loading work.memory(arch)
-# Loading work.mux_4x1(bhv)
 # Loading work.ram(syn)
 # Loading ieee.std_logic_arith(body)
 # Loading ieee.std_logic_unsigned(body)
 # Loading altera_mf.altera_common_conversion(body)
 # Loading altera_mf.altera_device_families(body)
 # Loading altera_mf.altsyncram(translated)
+# Loading work.mux_4x1(bhv)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+add wave -position end sim:/top_level_tb/UUT/U_DATAPATH/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: mshen  Hostname: SHEN-H1  ProcessID: 16720
+#           Attempting to use alternate WLF file "./wlftkc9h0h".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftkc9h0h
+add wave -position 2  sim:/top_level_tb/UUT/U_CONTROLLER/state
+add wave -position 4  sim:/top_level_tb/UUT/U_CONTROLLER/OpCode
+add wave -position 5  sim:/top_level_tb/UUT/U_CONTROLLER/Func
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 130 ns  Iteration: 1  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 130 ns  Iteration: 1  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+add wave -position 23  sim:/top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE/regs
+restart
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 130 ns  Iteration: 1  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 130 ns  Iteration: 1  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+add wave -position 16 sim:/top_level_tb/UUT/U_DATAPATH/U_MEMORY/*
+run
+run -all
+restart
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 130 ns  Iteration: 1  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 130 ns  Iteration: 1  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of memory.vhd was successful.
+restart
+# Loading work.memory(arch)
+# Warning in wave window restart: (vish-4014) No objects found matching '/top_level_tb/UUT/U_DATAPATH/U_MEMORY/InPort0Middle'. 
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 3 errors.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 3 errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
 # Loading work.registers_file(async_read)
 # Loading work.sign_extend(bhv)
 # Loading work.alu(bhv)
@@ -48,25 +123,40 @@ run -all
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
 # ** Note: DONE!!!!!!
-#    Time: 2210 ns  Iteration: 0  Instance: /top_level_tb
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
 restart
-step
-step
-add wave -position insertpoint File
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: mshen  Hostname: SHEN-H1  ProcessID: 16720
-#           Attempting to use alternate WLF file "./wlftsr8dvg".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftsr8dvg
-# (vish-4014) No objects found matching 'File'.
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+add wave -position end sim:/top_level_tb/UUT/U_DATAPATH/U_INSTRUCTION_REGISTER/*
 # Compile of registers_file.vhd was successful.
 # Compile of alu.vhd was successful.
-# Compile of controller.vhd was successful.
+# Compile of controller.vhd failed with 3 errors.
 # Compile of datapath.vhd was successful.
 # Compile of MIPS_FUNC_LIB.vhd was successful.
 # Compile of ALU_OP_LIB.vhd was successful.
 # Compile of ram.vhd was successful.
-# Compile of memory.vhd failed with 3 errors.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 3 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 3 errors.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
 # Compile of sign_extend.vhd was successful.
 # Compile of mux_2x1.vhd was successful.
 # Compile of mux_4x1.vhd was successful.
@@ -113,17 +203,202 @@ run -all
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
 # ** Note: DONE!!!!!!
-#    Time: 2210 ns  Iteration: 0  Instance: /top_level_tb
-do C:/Dev/MIPS-Project/ModelSim/Memory_Test/wave.do
-# ** Error: (vish-4014) No objects found matching '/top_level_tb/UUT/U_DATAPATH/U_MEMORY/address'.
-# Executing ONERROR command at macro C:\Dev\MIPS-Project\ModelSim\Memory_Test\wave.do line 35
-# ** Error: (vish-4014) No objects found matching '/top_level_tb/UUT/U_DATAPATH/U_MEMORY/data'.
-# Executing ONERROR command at macro C:\Dev\MIPS-Project\ModelSim\Memory_Test\wave.do line 36
-# ** Error: (vish-4014) No objects found matching '/top_level_tb/UUT/U_DATAPATH/U_MEMORY/RegB'.
-# Executing ONERROR command at macro C:\Dev\MIPS-Project\ModelSim\Memory_Test\wave.do line 37
-run
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
 run -all
-add wave -position end sim:/top_level_tb/UUT/U_DATAPATH/U_MEMORY/*
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
 restart
 run -all
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -131,5 +406,1322 @@ run -all
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
 # ** Note: DONE!!!!!!
-#    Time: 2210 ns  Iteration: 0  Instance: /top_level_tb
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Dev/MIPS-Project/ModelSim/Memory_Test/wave.do
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+add wave -position end sim:/top_level_tb/UUT/U_DATAPATH/U_PROGRAM_COUNTER/*
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2130 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2070 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+run
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+add wave -position 11 sim:/top_level_tb/UUT/U_DATAPATH/U_ALU/*
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+add wave -position 19 sim:/top_level_tb/UUT/U_DATAPATH/U_ALU_LO_REG/*
+add wave -position 24 sim:/top_level_tb/UUT/U_DATAPATH/U_ALU_HI_REG/*
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 2 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 2 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 2 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 2 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 3 errors.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 4 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 2 failed with 7 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 3 errors.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 3 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 3 errors.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 3 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 2 errors.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 2 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 2 errors.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 2 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+add wave -position 28  sim:/top_level_tb/UUT/U_CONTROLLER/ALUSrcB
+add wave -position 29  sim:/top_level_tb/UUT/U_CONTROLLER/ALUSrcA
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 14 errors.
+# Compile of datapath.vhd failed with 2 errors.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 6 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 3 failed with 22 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 6 errors.
+# Compile of datapath.vhd failed with 2 errors.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 3 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 3 failed with 11 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd failed with 3 errors.
+# Compile of datapath.vhd failed with 2 errors.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 3 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 3 failed with 8 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd failed with 2 errors.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 3 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 2 failed with 5 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 2 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 2 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 2030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 3030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 20030 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 20070 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+run -all
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 20070 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd failed with 2 errors.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 2 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 2 failed with 4 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd failed with 2 errors.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 1 failed with 2 errors.
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+# Warning in wave window restart: (vish-4014) No objects found matching '/top_level_tb/UUT/U_DATAPATH/InPortSwitches'. 
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 20070 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 20070 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 20070 ns  Iteration: 0  Instance: /top_level_tb
+# Compile of registers_file.vhd was successful.
+# Compile of alu.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of datapath.vhd was successful.
+# Compile of MIPS_FUNC_LIB.vhd was successful.
+# Compile of ALU_OP_LIB.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of sign_extend.vhd was successful.
+# Compile of mux_2x1.vhd was successful.
+# Compile of mux_4x1.vhd was successful.
+# Compile of reg.vhd was successful.
+# Compile of top_level.vhd was successful.
+# Compile of decoder7seg.vhd was successful.
+# Compile of top_level_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+restart
+# Loading work.alu_op_lib
+# Loading work.top_level_tb(tb)
+# Loading work.mips_func_lib
+# Loading work.top_level(str)
+# Loading work.datapath(str)
+# Loading work.reg(bhv)
+# Loading work.mux_2x1(bhv)
+# Loading work.memory(arch)
+# Loading work.mux_4x1(bhv)
+# Loading work.ram(syn)
+# Loading work.registers_file(async_read)
+# Loading work.sign_extend(bhv)
+# Loading work.alu(bhv)
+# Loading work.controller(bhv)
+# Loading work.decoder7seg(bhv)
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /top_level_tb/UUT/U_DATAPATH/U_REGISTERS_FILE
+# ** Note: DONE!!!!!!
+#    Time: 100070 ns  Iteration: 0  Instance: /top_level_tb
